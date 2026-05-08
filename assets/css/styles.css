@@ -127,15 +127,15 @@ header.scrolled {
 }
 
 .logo img {
-    height: 50px;
+    height: 80px;
     width: auto;
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--glow-color);
+    box-shadow: 0 0 20px var(--glow-color);
 }
 
 .logo span {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
     background: linear-gradient(to right, #fff, var(--primary-gold));
     -webkit-background-clip: text;
@@ -319,8 +319,22 @@ section {
 
 /* About Section */
 .about {
-    background: url('data:image/svg+xml;utf8,<svg opacity="0.03" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e2b740" d="M50 0 C50 50 100 50 100 50 C50 50 50 100 50 100 C50 50 0 50 0 50 C50 50 50 0 50 0 Z"/></svg>') repeat;
+    background-color: #eadfc5; /* Soft, warm sand color, less harsh than pure white */
+    background-image: url('data:image/svg+xml;utf8,<svg opacity="0.04" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23b38b22" d="M50 0 C50 50 100 50 100 50 C50 50 50 100 50 100 C50 50 0 50 0 50 C50 50 50 0 50 0 Z"/></svg>');
     background-size: 100px;
+    color: #1a0f0a;
+}
+
+.about .section-header h2 {
+    color: #1a0f0a;
+}
+
+.about .section-header h2 .text-gold {
+    color: var(--primary-dark-gold);
+}
+
+.about .section-header p {
+    color: #4a3b32;
 }
 
 .about-grid {
@@ -330,47 +344,48 @@ section {
     align-items: center;
 }
 
-.about-image {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(226, 183, 64, 0.15);
+.about-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.about-image img {
+.about-logo img {
     width: 100%;
+    max-width: 550px;
     height: auto;
     display: block;
-    border-radius: 20px;
+    mix-blend-mode: multiply; /* Hides the white background */
+    clip-path: inset(2px); /* Shaves 2px off all edges to hide the red square line */
+    border-radius: 20px; /* Softly rounds the corners without cutting off the text at the bottom */
     transition: var(--transition);
 }
 
-.about-image:hover img {
-    transform: scale(1.05);
-}
-
-.about-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid var(--primary-gold);
-    border-radius: 20px;
-    margin: 15px;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.5;
+.about-logo:hover img {
+    transform: scale(1.03);
 }
 
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: var(--primary-gold);
+    color: var(--primary-dark-gold);
 }
 
 .about-text p {
     margin-bottom: 20px;
-    color: var(--text-muted);
+    color: #4a3b32;
     font-size: 1.05rem;
+}
+
+.about .btn-outline {
+    border-color: var(--primary-dark-gold);
+    color: var(--primary-dark-gold);
+}
+
+.about .btn-outline:hover {
+    background: var(--primary-dark-gold);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.4);
 }
 
 /* Services Section */

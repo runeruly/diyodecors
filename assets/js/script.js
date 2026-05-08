@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Submission (Mock)
+    // Contact Form Submission (Web3Forms)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
@@ -82,18 +82,34 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.textContent = 'Sending...';
             btn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
-                btn.textContent = 'Message Sent Successfully!';
-                btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
-                contactForm.reset();
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
                 
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    btn.style.background = '';
-                }, 3000);
-            }, 1500);
+                const data = await response.json();
+                
+                if (data.success) {
+                    btn.textContent = 'Message Sent Successfully!';
+                    btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
+                    contactForm.reset();
+                } else {
+                    btn.textContent = 'Error sending message.';
+                    btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                }
+            } catch (error) {
+                btn.textContent = 'Network Error.';
+                btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+            }
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                btn.style.background = '';
+            }, 4000);
         });
     }
 });

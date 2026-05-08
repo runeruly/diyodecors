@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact DiyoDecors - Get in touch with us for premium event decoration services.">
     <title>Contact Us | DiyoDecors</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -82,20 +83,24 @@
             </div>
             
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="642eb93d-3905-4756-874a-f1a2a328f48e">
+                    <input type="hidden" name="subject" value="New Inquiry from DiyoDecors Website">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="event">Event Type</label>
-                        <select id="event" class="form-control" required style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e2b740%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 20px top 50%; background-size: 12px auto;">
+                        <select id="event" name="event_type" class="form-control" required style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e2b740%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 20px top 50%; background-size: 12px auto;">
                             <option value="">Select Event Type</option>
                             <option value="wedding">Wedding</option>
                             <option value="birthday">Birthday</option>
@@ -103,18 +108,22 @@
                             <option value="gender_reveal">Gender Reveal</option>
                             <option value="pasni">Pasni</option>
                             <option value="bartabanda">Bartabanda</option>
+                            <option value="gunyo_cholo">Gunyo Cholo</option>
+                            <option value="diwali">Diwali & Festivals</option>
+                            <option value="pujas">Special Pujas</option>
+                            <option value="anniversaries">Anniversaries</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
                         <label for="date">Event Date (Approximate)</label>
-                        <input type="date" id="date" class="form-control" style="color-scheme: dark;">
+                        <input type="date" id="date" name="event_date" class="form-control" style="color-scheme: dark;">
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" class="form-control" placeholder="Tell us more about your vision, location, and any specific requirements..."></textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="Tell us more about your vision, location, and any specific requirements..."></textarea>
                     </div>
                     
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
@@ -129,8 +138,8 @@
         <div class="footer-grid">
             <div class="footer-about">
                 <div class="logo">
-                    <img src="assets/images/logo.png" alt="DiyoDecors Logo" style="height: 40px;">
-                    <span style="font-size: 1.4rem;">DiyoDecors</span>
+                    <img src="assets/images/logo.png" alt="DiyoDecors Logo" style="height: 60px;">
+                    <span style="font-size: 1.8rem;">DiyoDecors</span>
                 </div>
                 <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We make moments beautiful.</p>
             </div>
