@@ -112,6 +112,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 4000);
         });
     }
+    // Hero Image Slider
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        const slideInterval = setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // Change image every 5 seconds
+    }
+
+    // ScrollSpy: Update active link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
 });
 
 function createDiyoParticle(container) {
