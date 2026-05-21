@@ -859,6 +859,10 @@ footer {
         display: block;
         z-index: 1000;
         font-size: 1.3rem;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     nav {
