@@ -93,9 +93,10 @@ ul {
 }
 
 .btn-outline:hover {
-    background: var(--primary-gold);
-    color: var(--bg-dark);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(226, 183, 64, 0.1);
+    color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Header & Navigation */
@@ -405,9 +406,10 @@ section {
 }
 
 .about .btn-outline:hover {
-    background: var(--primary-dark-gold);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(179, 139, 34, 0.1);
+    color: var(--primary-dark-gold);
+    border-color: var(--primary-dark-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Services Section */
@@ -692,9 +694,10 @@ section {
 }
 
 .contact-section .btn-outline:hover {
-    background: var(--primary-dark-gold);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(179, 139, 34, 0.1);
+    color: var(--primary-dark-gold);
+    border-color: var(--primary-dark-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-row {
