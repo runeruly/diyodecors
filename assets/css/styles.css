@@ -861,6 +861,10 @@ footer {
         font-size: 1.3rem;
     }
 
+    nav {
+        display: contents;
+    }
+
     nav ul {
         position: fixed;
         top: 0;
@@ -888,11 +892,6 @@ footer {
     
     .contact-info, .contact-form {
         padding: 20px;
-    }
-    
-    .about-logo img {
-        max-width: 250px;
-        margin: 0 auto;
     }
     
     .services-grid {
