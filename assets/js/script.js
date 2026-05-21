@@ -84,6 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const formData = new FormData(contactForm);
 
+            const resetButton = () => {
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                }, 4000);
+            };
+
             try {
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -93,23 +101,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 
                 if (data.success) {
-                    btn.textContent = 'Message Sent Successfully!';
+                    btn.textContent = 'Message Sent!';
                     btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
                     contactForm.reset();
+                    
+                    // Transition form to success message
+                    setTimeout(() => {
+                        contactForm.style.transition = 'opacity 0.4s ease';
+                        contactForm.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            contactForm.style.display = 'none';
+                            const successMsg = document.getElementById('formSuccess');
+                            if (successMsg) {
+                                successMsg.style.display = 'block';
+                                successMsg.style.opacity = '0';
+                                successMsg.style.transition = 'opacity 0.4s ease';
+                                // Trigger reflow
+                                successMsg.offsetHeight;
+                                successMsg.style.opacity = '1';
+                            }
+                        }, 400);
+                    }, 800);
                 } else {
                     btn.textContent = 'Error sending message.';
                     btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                    resetButton();
                 }
             } catch (error) {
                 btn.textContent = 'Network Error.';
                 btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                resetButton();
             }
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
-                btn.style.background = '';
-            }, 4000);
         });
     }
     // Hero Image Slider
