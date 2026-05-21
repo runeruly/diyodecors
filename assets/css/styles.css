@@ -546,6 +546,14 @@ section {
     text-shadow: 0 0 20px rgba(226, 183, 64, 0.4);
 }
 
+/* Contact Page Styling */
+.contact-section {
+    background-color: #eadfc5;
+    background-image: url('data:image/svg+xml;utf8,<svg opacity="0.04" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23b38b22" d="M50 0 C50 50 100 50 100 50 C50 50 50 100 50 100 C50 50 0 50 0 50 C50 50 50 0 50 0 Z"/></svg>');
+    background-size: 100px;
+    color: #1a0f0a;
+}
+
 .contact-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -556,15 +564,16 @@ section {
 
 .contact-info {
     padding: 40px;
-    background: var(--bg-card);
+    background: #fffbef;
     border-radius: 20px;
-    border: 1px solid rgba(226, 183, 64, 0.1);
+    border: 1px solid rgba(179, 139, 34, 0.2);
+    box-shadow: 0 10px 30px rgba(74, 59, 50, 0.08);
 }
 
 .contact-info h3 {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: var(--primary-gold);
+    color: var(--primary-dark-gold);
 }
 
 .info-item {
@@ -577,8 +586,8 @@ section {
 .info-icon {
     width: 50px;
     height: 50px;
-    background: rgba(226, 183, 64, 0.1);
-    color: var(--primary-gold);
+    background: rgba(179, 139, 34, 0.1);
+    color: var(--primary-dark-gold);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -590,19 +599,73 @@ section {
 .info-text h4 {
     font-size: 1.1rem;
     margin-bottom: 5px;
-    color: #fff;
+    color: #1a0f0a;
 }
 
 .info-text p {
-    color: var(--text-muted);
+    color: #4a3b32;
+}
+
+.info-text a {
+    color: #4a3b32;
+    transition: var(--transition);
+}
+
+.info-text a:hover {
+    color: var(--primary-dark-gold);
 }
 
 .contact-form {
     padding: 40px;
-    background: var(--bg-card);
+    background: #fffbef;
     border-radius: 20px;
-    border: 1px solid rgba(226, 183, 64, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(179, 139, 34, 0.2);
+    box-shadow: 0 10px 30px rgba(74, 59, 50, 0.08);
+}
+
+.contact-section .form-group label {
+    color: #1a0f0a;
+}
+
+.contact-section .form-control {
+    background: #ffffff;
+    border: 1px solid rgba(179, 139, 34, 0.3);
+    color: #1a0f0a;
+}
+
+.contact-section .form-control::placeholder {
+    color: #a09085;
+}
+
+.contact-section .form-control:focus {
+    border-color: var(--primary-dark-gold);
+    box-shadow: 0 0 15px rgba(179, 139, 34, 0.15);
+}
+
+.contact-section select.form-control {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b38b22%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+.contact-section .btn-primary {
+    background: linear-gradient(45deg, var(--primary-dark-gold), var(--primary-orange));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.3);
+}
+
+.contact-section .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(255, 123, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.contact-section .btn-outline {
+    border-color: var(--primary-dark-gold);
+    color: var(--primary-dark-gold);
+}
+
+.contact-section .btn-outline:hover {
+    background: var(--primary-dark-gold);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.4);
 }
 
 .form-row {
