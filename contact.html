@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com;">
     <meta name="description" content="Contact DiyoDecors - Get in touch with us for premium event decoration services.">
     <title>Contact Us | DiyoDecors</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome with SRI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -49,7 +53,7 @@
         <div class="contact-wrap">
 
             <div class="contact-info">
-                <h3>Get in Touch</h3>
+                <h2>Get in Touch</h2>
                 <p style="margin-bottom: 40px; opacity: 0.85;">We would love to hear about your upcoming
                     event. Reach out to us for a consultation and let us bring the Diyo glow to your celebration.</p>
 
@@ -86,9 +90,10 @@
             </div>
 
             <div class="contact-form">
-                <div id="formSuccess" class="form-success-message" style="display: none; text-align: center; padding: 40px 20px;">
+                <h2>Event Inquiry</h2>
+                <div id="formSuccess" class="form-success-message" style="display: none;">
                     <div class="success-icon" style="font-size: 3.5rem; color: var(--primary-dark-gold); margin-bottom: 20px;">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fa-solid fa-circle-check"></i>
                     </div>
                     <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Thank You For Your Interest</h3>
                     <p style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; opacity: 0.85;">
@@ -132,7 +137,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="date">Event Date (Required)</label>
+                            <label for="date">Event Date</label>
                             <input type="date" id="date" name="event_date" class="form-control" style="color-scheme: light;" required>
                         </div>
                     </div>

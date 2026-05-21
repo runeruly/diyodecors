@@ -2,39 +2,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Header Scroll Effect
     const header = document.querySelector('header');
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav ul');
     
-    if (mobileBtn) {
+    if (mobileBtn && nav) {
         mobileBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
             const icon = mobileBtn.querySelector('i');
-            if (nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            if (icon) {
+                if (nav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     }
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (nav && nav.classList.contains('active') && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+        if (nav && nav.classList.contains('active') && mobileBtn && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
             nav.classList.remove('active');
             const icon = mobileBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
     });
 
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Smooth Scroll for Anchor Links
+    // Smooth Scroll for Anchor Links with Header Offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -54,8 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close mobile menu if open
             if (nav && nav.classList.contains('active')) {
                 nav.classList.remove('active');
-                mobileBtn.querySelector('i').classList.remove('fa-times');
-                mobileBtn.querySelector('i').classList.add('fa-bars');
+                if (mobileBtn) {
+                    const icon = mobileBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
             }
 
             const targetId = this.getAttribute('href');
@@ -63,13 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerHeight = header ? header.offsetHeight : 0;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
+
+    // Constrain Event Date Picker to Future Dates
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+    }
 
     // Contact Form Submission (Web3Forms)
     const contactForm = document.getElementById('contactForm');
@@ -77,18 +99,22 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
+            const originalText = btn ? btn.textContent : 'Send Inquiry';
             
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
+            if (btn) {
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+            }
             
             const formData = new FormData(contactForm);
 
             const resetButton = () => {
                 setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    btn.style.background = '';
+                    if (btn) {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                        btn.style.background = '';
+                    }
                 }, 4000);
             };
 
@@ -101,8 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 
                 if (data.success) {
-                    btn.textContent = 'Message Sent!';
-                    btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
+                    if (btn) {
+                        btn.textContent = 'Message Sent!';
+                        btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
+                    }
                     contactForm.reset();
                     
                     // Transition form to success message
@@ -124,17 +152,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, 400);
                     }, 800);
                 } else {
-                    btn.textContent = 'Error sending message.';
-                    btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                    if (btn) {
+                        btn.textContent = 'Error sending message.';
+                        btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                    }
                     resetButton();
                 }
             } catch (error) {
-                btn.textContent = 'Network Error.';
-                btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                if (btn) {
+                    btn.textContent = 'Network Error.';
+                    btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                }
                 resetButton();
             }
         });
     }
+
     // Hero Image Slider
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
@@ -157,7 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
+                const headerHeight = header ? header.offsetHeight : 0;
+                if (window.scrollY >= sectionTop - headerHeight - 10) {
                     current = section.getAttribute('id');
                 }
             });

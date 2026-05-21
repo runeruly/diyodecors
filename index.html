@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com;">
     <meta name="description"
         content="DiyoDecors - Premium Event Decoration Services. Making Moments Beautiful with elegant designs for Weddings, Birthdays, and special ceremonies.">
     <title>DiyoDecors | Premium Event Decoration Services</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
 
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome with SRI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -21,9 +24,9 @@
 
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">
+        <a href="#home" class="logo">
             <img src="assets/images/logo.png" alt="DiyoDecors Logo">
-            <span>Diyo Decors</span>
+            <span>DiyoDecors</span>
         </a>
 
         <button class="mobile-menu-btn">
@@ -32,7 +35,7 @@
 
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
@@ -69,7 +72,7 @@
                 <img src="assets/images/logo.png" alt="DiyoDecors Signature Logo">
             </div>
             <div class="about-text">
-                <div class="section-header" style="text-align: left;">
+                <div class="section-header left">
                     <h2>The <span class="text-gold">Diyo</span> Essence</h2>
                 </div>
                 <h3>Lighting up your celebrations</h3>
@@ -102,11 +105,11 @@
                     <img src="assets/images/hero-wedding.png" alt="Wedding Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-rings-wedding"></i><i class="fas fa-heart"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-ring"></i><i class="fa-solid fa-heart"></i></div>
                     <h3>Weddings</h3>
                     <p>Luxurious mandaps, breathtaking stage setups, and elegant floral arrangements that make your big
                         day truly magical.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -116,11 +119,11 @@
                     <img src="assets/images/service-birthday.png" alt="Birthday Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-cake-candles"></i></div>
                     <h3>Birthdays</h3>
                     <p>Creative themes, vibrant balloon setups, and stunning photo backdrops for birthdays of all ages.
                     </p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -130,11 +133,11 @@
                     <img src="assets/images/service-babyshower.png" alt="Baby Shower Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-baby-carriage"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-baby-carriage"></i></div>
                     <h3>Baby Shower</h3>
                     <p>Soft, elegant, and joyful setups to welcome the new arrival, tailored perfectly to your chosen
                         theme.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -144,10 +147,10 @@
                     <img src="assets/images/service-gender-reveal.png" alt="Gender Reveal Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-venus-mars"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-venus-mars"></i></div>
                     <h3>Gender Reveal</h3>
                     <p>Exciting and highly photogenic decors to make the big announcement an unforgettable moment.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -157,11 +160,11 @@
                     <img src="assets/images/service-pasni.png" alt="Pasni Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-om"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-om"></i></div>
                     <h3>Pasni</h3>
                     <p>Traditional and beautiful decorations honoring the sacred rice-feeding ceremony with cultural
                         elegance.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -171,11 +174,11 @@
                     <img src="assets/images/service-bartabanda.png" alt="Bartabanda Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-fire"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-fire"></i></div>
                     <h3>Bartabanda</h3>
                     <p>Authentic and grand setups for the sacred thread ceremony, incorporating traditional brass items
                         and marigolds.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -185,11 +188,11 @@
                     <img src="assets/images/service-gunyo-cholo.png" alt="Gunyo Cholo Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-child"></i></div>
                     <h3>Gunyo Cholo</h3>
                     <p>Beautiful, culturally rich setups featuring vibrant red, green, and gold colors for the
                         traditional coming-of-age ceremony.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -199,11 +202,11 @@
                     <img src="assets/images/service-diwali.png" alt="Diwali Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <h3>Diwali & Festivals</h3>
                     <p>Stunning setups for Diwali and other festivals, complete with glowing diyos, floral rangolis, and
                         magical lighting.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -213,11 +216,11 @@
                     <img src="assets/images/service-pujas.png" alt="Puja Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-praying-hands"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-hands-praying"></i></div>
                     <h3>Special Pujas</h3>
                     <p>Serene, elegant, and peaceful floral and traditional decor to create the perfect spiritual
                         atmosphere for religious ceremonies.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -227,11 +230,11 @@
                     <img src="assets/images/service-anniversaries.png" alt="Anniversary Decoration">
                 </div>
                 <div class="service-content">
-                    <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
                     <h3>Anniversaries</h3>
                     <p>Luxurious, sophisticated decor for milestone anniversaries, featuring elegant fabrics, crystal
                         touches, and beautiful florals.</p>
-                    <a href="contact.html" class="service-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -275,10 +278,10 @@
             <div class="footer-links">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="#">Weddings</a></li>
-                    <li><a href="#">Birthdays</a></li>
-                    <li><a href="#">Baby Showers</a></li>
-                    <li><a href="#">Traditional Ceremonies</a></li>
+                    <li><a href="#services">Weddings</a></li>
+                    <li><a href="#services">Birthdays</a></li>
+                    <li><a href="#services">Baby Showers</a></li>
+                    <li><a href="#services">Traditional Ceremonies</a></li>
                 </ul>
             </div>
 
