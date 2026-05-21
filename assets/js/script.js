@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = btn ? btn.textContent : 'Send Inquiry';
             
             if (btn) {
-                btn.textContent = 'Sending...';
+                btn.innerHTML = '<span class="spinner"></span> Sending...';
                 btn.disabled = true;
             }
             
             const formData = new FormData(contactForm);
-
+ 
             const resetButton = () => {
                 setTimeout(() => {
                     if (btn) {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 4000);
             };
-
+ 
             try {
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.success) {
                     if (btn) {
                         btn.textContent = 'Message Sent!';
-                        btn.style.background = 'linear-gradient(45deg, #28a745, #218838)';
+                        btn.style.background = '#28a745';
                     }
                     contactForm.reset();
                     
@@ -154,14 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (btn) {
                         btn.textContent = 'Error sending message.';
-                        btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                        btn.style.background = '#dc3545';
                     }
                     resetButton();
                 }
             } catch (error) {
                 if (btn) {
                     btn.textContent = 'Network Error.';
-                    btn.style.background = 'linear-gradient(45deg, #dc3545, #c82333)';
+                    btn.style.background = '#dc3545';
                 }
                 resetButton();
             }

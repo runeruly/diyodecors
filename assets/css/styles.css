@@ -75,13 +75,14 @@ ul {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
+    background: var(--primary-gold);
     color: var(--bg-dark);
-    box-shadow: 0 4px 15px var(--glow-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 20px var(--glow-orange);
+    background: var(--primary-dark-gold);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
 
@@ -94,7 +95,7 @@ ul {
 .btn-outline:hover {
     background: var(--primary-gold);
     color: var(--bg-dark);
-    box-shadow: 0 4px 15px var(--glow-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Header & Navigation */
@@ -130,17 +131,14 @@ header.scrolled {
     height: 80px;
     width: auto;
     border-radius: 50%;
-    box-shadow: 0 0 20px var(--glow-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo span {
     font-family: var(--font-heading);
     font-size: 2.2rem;
     font-weight: 700;
-    background: linear-gradient(to right, #fff, var(--primary-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(226, 183, 64, 0.2);
+    color: var(--primary-gold);
 }
 
 nav ul {
@@ -409,7 +407,7 @@ section {
 .about .btn-outline:hover {
     background: var(--primary-dark-gold);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Services Section */
@@ -672,9 +670,9 @@ section {
 }
 
 .contact-section .btn-primary {
-    background: linear-gradient(45deg, var(--primary-dark-gold), var(--primary-orange));
+    background: var(--primary-dark-gold);
     color: var(--bg-dark);
-    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-success-message {
@@ -683,7 +681,8 @@ section {
 }
 
 .contact-section .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(255, 123, 0, 0.4);
+    background: var(--primary-gold);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
@@ -695,7 +694,7 @@ section {
 .contact-section .btn-outline:hover {
     background: var(--primary-dark-gold);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(179, 139, 34, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .form-row {
@@ -792,7 +791,7 @@ footer {
 .social-links a:hover {
     background: var(--primary-gold);
     color: var(--bg-dark);
-    box-shadow: 0 0 15px var(--glow-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
 }
 
@@ -901,4 +900,21 @@ footer {
     .services-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Predictable Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    border-top-color: currentColor;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
