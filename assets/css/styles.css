@@ -412,6 +412,45 @@ section {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Intro Teaser Section */
+.intro-teaser {
+    background-color: #eadfc5;
+    background-image: url('data:image/svg+xml;utf8,<svg opacity="0.03" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23b38b22" d="M50 0 C50 50 100 50 100 50 C50 50 50 100 50 100 C50 50 0 50 0 50 C50 50 50 0 50 0 Z"/></svg>');
+    background-size: 100px;
+    color: #1a0f0a;
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.intro-teaser .section-header h2 {
+    color: #1a0f0a;
+    margin-bottom: 20px;
+}
+
+.intro-teaser .section-header h2 .text-gold {
+    color: var(--primary-dark-gold);
+}
+
+.intro-teaser p {
+    color: #4a3b32;
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+.intro-teaser .btn-outline {
+    border-color: var(--primary-dark-gold);
+    color: var(--primary-dark-gold);
+}
+
+.intro-teaser .btn-outline:hover {
+    background: rgba(179, 139, 34, 0.1);
+    color: var(--primary-dark-gold);
+    border-color: var(--primary-dark-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* Meet the Founders Section */
 .about-founders {
     margin-top: 80px;
