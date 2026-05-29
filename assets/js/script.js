@@ -293,6 +293,61 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
         }
     }
+
+    // Setup Scroll Reveal Animations
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                } else {
+                    // Only remove the revealed class when scrolling back up (leaving from the bottom)
+                    // This creates a striking re-animation effect when scrolling back down, but keeps things elegant
+                    if (entry.boundingClientRect.top > 0) {
+                        entry.target.classList.remove('revealed');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.08, // Trigger when 8% is visible
+            rootMargin: '0px 0px -40px 0px' // Trigger slightly before it fully enters the viewport
+        });
+
+        // 1. Observe Section Headers (fade-up reveal)
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.classList.add('reveal-up');
+            revealObserver.observe(header);
+        });
+
+        // 2. Observe Grid Cards with staggered transition-delays
+        const staggeredContainers = document.querySelectorAll('.services-grid, .founders-grid');
+        staggeredContainers.forEach(container => {
+            const items = container.children;
+            Array.from(items).forEach((item, index) => {
+                item.classList.add('reveal-up');
+                item.style.transitionDelay = `${index * 0.1}s`;
+                revealObserver.observe(item);
+            });
+        });
+
+        // 3. Observe Left/Right side columns
+        document.querySelectorAll('.about-logo, .contact-info').forEach(el => {
+            el.classList.add('reveal-left');
+            revealObserver.observe(el);
+        });
+
+        document.querySelectorAll('.about-text, .contact-form').forEach(el => {
+            el.classList.add('reveal-right');
+            revealObserver.observe(el);
+        });
+
+        // 4. Observe CTA sections (scale reveal)
+        document.querySelectorAll('.cta h2, .cta p, .cta .btn').forEach((el, index) => {
+            el.classList.add('reveal-scale');
+            el.style.transitionDelay = `${index * 0.08}s`;
+            revealObserver.observe(el);
+        });
+    }
 });
 
 function createDiyoParticle(container) {
