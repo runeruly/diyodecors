@@ -29,6 +29,27 @@
     box-sizing: border-box;
 }
 
+/* Lenis smooth scroll settings */
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overflow: clip;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-locked {
+    overflow: hidden;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--bg-dark);
@@ -213,6 +234,8 @@ nav ul li a.active::after {
     opacity: 0;
     transition: opacity 2s ease-in-out;
     transform: scale(1.15);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .hero-slide.active {
@@ -285,6 +308,8 @@ nav ul li a.active::after {
     box-shadow: 0 0 20px 5px var(--glow-color);
     animation: float 5s infinite ease-in-out;
     opacity: 0;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 @keyframes float {

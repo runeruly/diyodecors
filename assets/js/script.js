@@ -1,15 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Lenis Smooth Scroll
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 1.5,
+            syncTouch: false // Keeps native momentum on mobile devices
+        });
+
+        // Expose to window scope
+        window.lenis = lenis;
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+
     // Header Scroll Effect
     const header = document.querySelector('header');
     
     if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        if (lenis) {
+            lenis.on('scroll', (e) => {
+                if (e.scroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        } else {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        }
     }
 
     // Mobile Menu Toggle
@@ -75,16 +109,46 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = header ? header.offsetHeight : 0;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.scrollY - headerHeight;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                if (lenis) {
+                    lenis.scrollTo(targetElement, {
+                        offset: -headerHeight,
+                        duration: 1.2
+                    });
+                } else {
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerHeight;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
+
+    // Smooth Scroll to Hash on page load if hash exists
+    if (window.location.hash) {
+        const hashTarget = document.querySelector(window.location.hash);
+        if (hashTarget) {
+            setTimeout(() => {
+                const headerHeight = header ? header.offsetHeight : 0;
+                if (lenis) {
+                    lenis.scrollTo(hashTarget, {
+                        offset: -headerHeight,
+                        duration: 1.5,
+                        immediate: false
+                    });
+                } else {
+                    const elementPosition = hashTarget.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerHeight;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 300);
+        }
+    }
 
     // Constrain Event Date Picker to Future Dates
     const dateInput = document.getElementById('date');
@@ -179,30 +243,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000); // Change image every 5 seconds
     }
 
-    // ScrollSpy: Update active link based on scroll position
+    // ScrollSpy: Update active link based on scroll position (optimized with cached offsets)
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav ul li a');
 
     if (sections.length > 0 && navLinks.length > 0) {
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                const headerHeight = header ? header.offsetHeight : 0;
-                if (window.scrollY >= sectionTop - headerHeight - 10) {
-                    current = section.getAttribute('id');
-                }
+        let sectionPositions = [];
+
+        const cacheSectionPositions = () => {
+            const headerHeight = header ? header.offsetHeight : 0;
+            sectionPositions = Array.from(sections).map(section => {
+                return {
+                    id: section.getAttribute('id'),
+                    top: section.offsetTop - headerHeight - 20
+                };
             });
+        };
+
+        // Cache positions initially and on resize to avoid scroll layout thrashing
+        cacheSectionPositions();
+        window.addEventListener('resize', cacheSectionPositions, { passive: true });
+
+        const updateActiveLink = (scrollY) => {
+            let current = '';
+            for (let i = 0; i < sectionPositions.length; i++) {
+                if (scrollY >= sectionPositions[i].top) {
+                    current = sectionPositions[i].id;
+                }
+            }
 
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
+                const href = link.getAttribute('href');
+                if (href === `#${current}` || href.endsWith(`#${current}`)) {
                     link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
                 }
             });
-        });
+        };
+
+        // Bind scroll updates to Lenis or fallback to passive window scroll
+        if (lenis) {
+            lenis.on('scroll', (e) => {
+                updateActiveLink(e.scroll);
+            });
+        } else {
+            window.addEventListener('scroll', () => {
+                updateActiveLink(window.scrollY);
+            }, { passive: true });
+        }
     }
 });
 
