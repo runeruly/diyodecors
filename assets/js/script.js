@@ -350,34 +350,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Portfolio Slideshow Controller
-    const slides = document.querySelectorAll('.slide');
-    const details = document.querySelectorAll('.slide-details');
+    const portfolioSlides = document.querySelectorAll('.slide');
+    const portfolioDetails = document.querySelectorAll('.slide-details');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
-    if (slides.length > 0 && details.length > 0) {
+    if (portfolioSlides.length > 0 && portfolioDetails.length > 0) {
         let currentSlideIndex = 0;
 
         const showSlide = (index) => {
             // Remove active classes
-            slides.forEach(s => s.classList.remove('active'));
-            details.forEach(d => d.classList.remove('active'));
+            portfolioSlides.forEach(s => s.classList.remove('active'));
+            portfolioDetails.forEach(d => d.classList.remove('active'));
 
             // Set new active slide index
             currentSlideIndex = index;
 
             // Add active classes
-            slides[currentSlideIndex].classList.add('active');
-            details[currentSlideIndex].classList.add('active');
+            portfolioSlides[currentSlideIndex].classList.add('active');
+            portfolioDetails[currentSlideIndex].classList.add('active');
         };
 
         const nextSlide = () => {
-            const nextIndex = (currentSlideIndex + 1) % slides.length;
+            const nextIndex = (currentSlideIndex + 1) % portfolioSlides.length;
             showSlide(nextIndex);
         };
 
         const prevSlide = () => {
-            const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            const prevIndex = (currentSlideIndex - 1 + portfolioSlides.length) % portfolioSlides.length;
             showSlide(prevIndex);
         };
 
