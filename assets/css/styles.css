@@ -1164,3 +1164,377 @@ footer {
     opacity: 1 !important;
     transform: translate(0, 0) scale(1) !important;
 }
+
+/* Portfolio Section */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(226, 183, 64, 0.3);
+    color: var(--text-muted);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-gold);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(226, 183, 64, 0.2);
+}
+
+.filter-btn.active {
+    background: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 4px 15px rgba(226, 183, 64, 0.4);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(226, 183, 64, 0.1);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    display: block;
+}
+
+.portfolio-item.hidden {
+    display: none;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    background: var(--bg-card-hover);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(226, 183, 64, 0.15);
+    border-color: rgba(226, 183, 64, 0.4);
+}
+
+.portfolio-media {
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-item:hover .portfolio-media img {
+    transform: scale(1.08);
+}
+
+/* Video Badge / Overlay */
+.video-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(13, 8, 6, 0.85);
+    border: 1px solid var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+    box-shadow: 0 0 10px rgba(226, 183, 64, 0.3);
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .video-badge {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--primary-gold);
+    transform: scale(1.1);
+}
+
+/* Hover Info overlay */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(13, 8, 6, 0.95) 0%, rgba(13, 8, 6, 0.6) 60%, rgba(13, 8, 6, 0.2) 100%);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px 25px;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-tag {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-gold);
+    border: 1px solid var(--primary-gold);
+    border-radius: 50px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.portfolio-overlay h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.portfolio-location {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portfolio-location i {
+    color: var(--primary-gold);
+}
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 3, 2, 0.98);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2010;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-close:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    transform: rotate(90deg);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2010;
+    transition: var(--transition);
+}
+
+.lightbox-nav:hover {
+    background: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(226, 183, 64, 0.4);
+}
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
+
+.lightbox-content-wrapper {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid rgba(226, 183, 64, 0.15);
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lightbox.active .lightbox-content-wrapper {
+    transform: scale(1);
+}
+
+.lightbox-media-container {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.lightbox-media-container img,
+.lightbox-media-container video {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-details {
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid rgba(226, 183, 64, 0.1);
+    overflow-y: auto;
+}
+
+.lightbox-details .portfolio-tag {
+    margin-bottom: 20px;
+}
+
+.lightbox-details h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.lightbox-details .lightbox-location {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lightbox-details .lightbox-location i {
+    color: var(--primary-gold);
+}
+
+.lightbox-details p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.lightbox-details .btn-primary {
+    align-self: flex-start;
+}
+
+/* Lightbox responsive overrides */
+@media (max-width: 992px) {
+    .lightbox-content-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.2fr 1fr;
+        height: 85vh;
+    }
+    
+    .lightbox-details {
+        padding: 30px;
+        border-left: none;
+        border-top: 1px solid rgba(226, 183, 64, 0.1);
+    }
+    
+    .lightbox-details h2 {
+        font-size: 1.8rem;
+    }
+    
+    .lightbox-details p {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lightbox-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .lightbox-content-wrapper {
+        width: 95%;
+        height: 90vh;
+    }
+}
