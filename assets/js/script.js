@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DiyoDecors script.js loaded - v1.1.4');
     // Initialize Lenis Smooth Scroll
     let lenis;
     if (typeof Lenis !== 'undefined') {
@@ -355,10 +356,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
+    console.log('Portfolio Slideshow search results:', {
+        slidesCount: portfolioSlides.length,
+        detailsCount: portfolioDetails.length,
+        prevBtnExists: !!prevBtn,
+        nextBtnExists: !!nextBtn
+    });
+
     if (portfolioSlides.length > 0 && portfolioDetails.length > 0) {
         let currentSlideIndex = 0;
+        console.log('Portfolio Slideshow successfully initialized!');
 
         const showSlide = (index) => {
+            console.log('Switching to slide index:', index);
             // Remove active classes
             portfolioSlides.forEach(s => s.classList.remove('active'));
             portfolioDetails.forEach(d => d.classList.remove('active'));
@@ -373,11 +383,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const nextSlide = () => {
             const nextIndex = (currentSlideIndex + 1) % portfolioSlides.length;
+            console.log('nextSlide triggered. Next index will be:', nextIndex);
             showSlide(nextIndex);
         };
 
         const prevSlide = () => {
             const prevIndex = (currentSlideIndex - 1 + portfolioSlides.length) % portfolioSlides.length;
+            console.log('prevSlide triggered. Prev index will be:', prevIndex);
             showSlide(prevIndex);
         };
 
