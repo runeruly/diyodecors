@@ -409,6 +409,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Custom Event Type Toggle (Contact Form)
+    const eventSelect = document.getElementById('event');
+    const customEventGroup = document.getElementById('custom-event-group');
+    const customEventInput = document.getElementById('custom_event');
+
+    if (eventSelect && customEventGroup && customEventInput) {
+        eventSelect.addEventListener('change', () => {
+            if (eventSelect.value === 'other') {
+                customEventGroup.style.display = 'block';
+                customEventInput.required = true;
+                customEventInput.focus();
+            } else {
+                customEventGroup.style.display = 'none';
+                customEventInput.required = false;
+                customEventInput.value = '';
+            }
+        });
+    }
 });
 
 function createDiyoParticle(container) {
