@@ -349,174 +349,82 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Portfolio Filtering and Lightbox Modal
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const lightbox = document.getElementById('lightbox');
+    // Portfolio Slideshow Controller
+    const slides = document.querySelectorAll('.slide');
+    const details = document.querySelectorAll('.slide-details');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
     
-    if (filterBtns.length > 0 && portfolioItems.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    const categories = item.getAttribute('data-category').split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        item.classList.remove('hidden');
-                        // Fade in transition
-                        item.style.opacity = '0';
-                        item.offsetHeight; // trigger reflow
-                        item.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
-                        item.style.opacity = '1';
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-                
-                // Recalculate ScrollSpy positions since layout changed
-                if (typeof cacheSectionPositions === 'function') {
-                    cacheSectionPositions();
+    if (slides.length > 0 && details.length > 0 && thumbnails.length > 0) {
+        let currentSlideIndex = 0;
+
+        const showSlide = (index) => {
+            // Pause any playing videos before switching slides
+            const activeSlide = document.querySelector('.slide.active');
+            if (activeSlide) {
+                const activeVideo = activeSlide.querySelector('video');
+                if (activeVideo) {
+                    activeVideo.pause();
                 }
-            });
-        });
-    }
+            }
 
-    if (lightbox) {
-        const closeBtn = lightbox.querySelector('.lightbox-close');
-        const prevBtn = lightbox.querySelector('.lightbox-prev');
-        const nextBtn = lightbox.querySelector('.lightbox-next');
-        const mediaContainer = lightbox.querySelector('.lightbox-media-container');
-        
-        const titleEl = lightbox.querySelector('.lightbox-details h2');
-        const tagEl = lightbox.querySelector('.lightbox-details .portfolio-tag');
-        const locationEl = lightbox.querySelector('.lightbox-details .lightbox-location span');
-        const descEl = lightbox.querySelector('.lightbox-details p');
-        
-        let currentItemIndex = 0;
-        let visibleItems = [];
+            // Remove active classes
+            slides.forEach(s => s.classList.remove('active'));
+            details.forEach(d => d.classList.remove('active'));
+            thumbnails.forEach(t => t.classList.remove('active'));
 
-        const updateVisibleItems = () => {
-            visibleItems = Array.from(portfolioItems).filter(item => !item.classList.contains('hidden'));
-        };
+            // Set new active slide index
+            currentSlideIndex = index;
 
-        const openLightbox = (item) => {
-            updateVisibleItems();
-            currentItemIndex = visibleItems.indexOf(item);
-            
-            showMedia(item);
-            lightbox.classList.add('active');
-            
-            // Disable scroll
-            if (window.lenis) {
-                window.lenis.stop();
-            } else {
-                document.body.style.overflow = 'hidden';
+            // Add active classes
+            slides[currentSlideIndex].classList.add('active');
+            details[currentSlideIndex].classList.add('active');
+            thumbnails[currentSlideIndex].classList.add('active');
+
+            // Autoplay video if the new slide is a video
+            const newVideo = slides[currentSlideIndex].querySelector('video');
+            if (newVideo) {
+                newVideo.currentTime = 0;
+                newVideo.play().catch(e => {
+                    console.log("Autoplay prevented:", e);
+                });
             }
         };
 
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            // Empty media container to stop any video
-            mediaContainer.innerHTML = '';
-            
-            // Re-enable scroll
-            if (window.lenis) {
-                window.lenis.start();
-            } else {
-                document.body.style.overflow = '';
-            }
+        const nextSlide = () => {
+            const nextIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(nextIndex);
         };
 
-        const showMedia = (item) => {
-            mediaContainer.innerHTML = '';
-            
-            const isVideo = item.getAttribute('data-video') === 'true';
-            const mediaSrc = item.getAttribute('data-src');
-            const title = item.querySelector('h3').textContent;
-            const tag = item.querySelector('.portfolio-tag').textContent;
-            const locationText = item.querySelector('.portfolio-location').textContent;
-            const desc = item.getAttribute('data-desc');
-
-            titleEl.textContent = title;
-            tagEl.textContent = tag;
-            locationEl.innerHTML = `<i class="fas fa-map-marker-alt text-gold"></i> ${locationText.trim()}`;
-            descEl.textContent = desc;
-
-            if (isVideo) {
-                const video = document.createElement('video');
-                video.src = mediaSrc;
-                video.controls = true;
-                video.autoplay = true;
-                video.playsInline = true;
-                video.style.maxWidth = '100%';
-                video.style.maxHeight = '100%';
-                mediaContainer.appendChild(video);
-            } else {
-                const img = document.createElement('img');
-                img.src = mediaSrc;
-                img.alt = title;
-                img.style.maxWidth = '100%';
-                img.style.maxHeight = '100%';
-                mediaContainer.appendChild(img);
-            }
+        const prevSlide = () => {
+            const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
         };
 
-        const navigate = (direction) => {
-            updateVisibleItems();
-            if (visibleItems.length <= 1) return;
-            
-            if (direction === 'next') {
-                currentItemIndex = (currentItemIndex + 1) % visibleItems.length;
-            } else {
-                currentItemIndex = (currentItemIndex - 1 + visibleItems.length) % visibleItems.length;
-            }
-            
-            showMedia(visibleItems[currentItemIndex]);
-        };
-
-        // Attach click listeners to cards
-        portfolioItems.forEach(item => {
-            item.addEventListener('click', () => {
-                openLightbox(item);
-            });
-        });
-
-        // Close events
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeLightbox);
-        }
-        
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper') === false && !e.target.closest('.lightbox-content-wrapper') && !e.target.closest('.lightbox-nav') && !e.target.closest('.lightbox-close')) {
-                closeLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') navigate('next');
-            if (e.key === 'ArrowLeft') navigate('prev');
-        });
-
-        // Nav buttons
+        // Arrow click listeners
         if (prevBtn) {
-            prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navigate('prev');
-            });
+            prevBtn.addEventListener('click', prevSlide);
         }
         if (nextBtn) {
-            nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navigate('next');
-            });
+            nextBtn.addEventListener('click', nextSlide);
         }
+
+        // Thumbnail click listeners
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const index = parseInt(thumb.getAttribute('data-index'), 10);
+                showSlide(index);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (document.querySelector('.portfolio-slideshow')) {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            }
+        });
     }
 });
 

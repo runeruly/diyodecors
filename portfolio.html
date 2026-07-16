@@ -49,98 +49,103 @@
         <h1>Our <span class="text-gold">Portfolio</span></h1>
     </div>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio-section" style="padding-top: 60px;">
-        <div class="portfolio-filters">
-            <button class="filter-btn active" data-filter="all">All Setups</button>
-            <button class="filter-btn" data-filter="traditional">Traditional</button>
-            <button class="filter-btn" data-filter="graduation">Graduations</button>
+    <!-- Slideshow Section -->
+    <section class="slideshow-section">
+        <div class="portfolio-slideshow">
+            <!-- Left Side: Media display -->
+            <div class="slideshow-main">
+                <div class="slides-container">
+                    <!-- Slide 1: Pasni Stage Setup -->
+                    <div class="slide active" data-type="image">
+                        <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Ceremony Stage">
+                    </div>
+                    <!-- Slide 2: Pasni Hall Decor -->
+                    <div class="slide" data-type="image">
+                        <img src="assets/images/portfolio/pasni_2_enhanced.png" alt="Pasni Celebration Hall">
+                    </div>
+                    <!-- Slide 3: Graduation Showcase Video -->
+                    <div class="slide" data-type="video">
+                        <video src="assets/images/portfolio/Graduation 3.MOV" controls playsinline></video>
+                    </div>
+                    <!-- Slide 4: Graduation Arch Backdrop -->
+                    <div class="slide" data-type="image">
+                        <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Congrats Kabya Graduation Arch">
+                    </div>
+                    <!-- Slide 5: Graduation Table Setting Details -->
+                    <div class="slide" data-type="image">
+                        <img src="assets/images/portfolio/graduation_2_enhanced.png" alt="Graduation Table Details">
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="slide-nav prev-btn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="slide-nav next-btn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <!-- Right Side: Details display -->
+            <div class="slideshow-info">
+                <!-- Details 1 -->
+                <div class="slide-details active">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h2>Pasni Ceremony Stage</h2>
+                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</div>
+                    <p>An enhanced look of our traditional Nepalese Pasni ceremony setup. The focus is on a stunning white shell-shaped sofa draped in red fabric, set against a shimmering gold sequined curtain and flanked by soft red and white drapes with floral accents.</p>
+                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+                <!-- Details 2 -->
+                <div class="slide-details">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h2>Pasni Celebration Hall</h2>
+                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</div>
+                    <p>A wider perspective of the elegant banquet hall configured for a Pasni celebration. The space is arranged with white guest linens, red satin runners, floral arrangements, and a wooden dance floor leading to the central gold and red stage setup.</p>
+                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+                <!-- Details 3 -->
+                <div class="slide-details">
+                    <span class="portfolio-tag">Graduations</span>
+                    <h2>Graduation Stage Setup</h2>
+                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</div>
+                    <p>A video walkthrough showcasing our premium, custom graduation ceremony stage setting. Featuring elegant background drapes, custom lighting, floral details, and luxury accents.</p>
+                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+                <!-- Details 4 -->
+                <div class="slide-details">
+                    <span class="portfolio-tag">Graduations</span>
+                    <h2>Congrats Kabya Graduation Arch</h2>
+                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</div>
+                    <p>A beautiful custom graduation arch backdrop designed for Kabya's Class of 2026 celebration. Features a clean white arch sign with custom lettering and a graduation cap illustration, adorned with a gorgeous organic balloon garland in white, black, and gold with black ribbon bows.</p>
+                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+                <!-- Details 5 -->
+                <div class="slide-details">
+                    <span class="portfolio-tag">Graduations</span>
+                    <h2>Graduation Table Details</h2>
+                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</div>
+                    <p>Intricate table setting details designed by DiyoDecors for a graduation celebration. Features glossy dark wood guest tables reflecting upside-down crystal glassware, custom congrats graduation favor boxes, elegant dark linens, and our signature Diyo Decors card.</p>
+                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+            </div>
         </div>
-
-        <div class="portfolio-grid">
-            <!-- Item 1: Pasni Stage Setup -->
-            <div class="portfolio-item" data-category="traditional" data-video="false" data-src="assets/images/portfolio/pasni_1_enhanced.png" data-desc="An enhanced look of our traditional Nepalese Pasni ceremony setup. The focus is on a stunning white shell-shaped sofa draped in red fabric, set against a shimmering gold sequined curtain and flanked by soft red and white drapes with floral accents.">
-                <div class="portfolio-media">
-                    <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Stage Setup">
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Traditional</span>
-                    <h3>Pasni Ceremony Stage</h3>
-                    <div class="portfolio-location"><i class="fas fa-map-marker-alt"></i> Germantown, MD</div>
-                </div>
+        
+        <!-- Thumbnails row -->
+        <div class="slideshow-thumbnails">
+            <div class="thumbnail active" data-index="0">
+                <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Stage">
             </div>
-
-            <!-- Item 2: Pasni Hall Decor -->
-            <div class="portfolio-item" data-category="traditional" data-video="false" data-src="assets/images/portfolio/pasni_2_enhanced.png" data-desc="A wider perspective of the elegant banquet hall configured for a Pasni celebration. The space is arranged with white guest linens, red satin runners, floral arrangements, and a wooden dance floor leading to the central gold and red stage setup.">
-                <div class="portfolio-media">
-                    <img src="assets/images/portfolio/pasni_2_enhanced.png" alt="Pasni Banquet Hall">
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Traditional</span>
-                    <h3>Pasni Celebration Hall</h3>
-                    <div class="portfolio-location"><i class="fas fa-map-marker-alt"></i> Germantown, MD</div>
-                </div>
+            <div class="thumbnail" data-index="1">
+                <img src="assets/images/portfolio/pasni_2_enhanced.png" alt="Pasni Hall">
             </div>
-
-            <!-- Item 3: Graduation Showcase Video -->
-            <div class="portfolio-item" data-category="graduation" data-video="true" data-src="assets/images/portfolio/Graduation 3.MOV" data-desc="A video walkthrough showcasing our premium, custom graduation ceremony stage setting. Featuring elegant background drapes, custom lighting, floral details, and luxury accents.">
-                <div class="portfolio-media">
-                    <img src="assets/images/service-dance.png" alt="Graduation Setup Thumbnail">
-                    <div class="video-badge"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Graduations</span>
-                    <h3>Graduation Stage Setup</h3>
-                    <div class="portfolio-location"><i class="fas fa-map-marker-alt"></i> Rockville, MD</div>
-                </div>
+            <div class="thumbnail" data-index="2">
+                <img src="assets/images/service-dance.png" alt="Graduation Video">
             </div>
-
-            <!-- Item 4: Graduation Arch Backdrop -->
-            <div class="portfolio-item" data-category="graduation" data-video="false" data-src="assets/images/portfolio/graduation_1_enhanced.png" data-desc="A beautiful custom graduation arch backdrop designed for Kabya's Class of 2026 celebration. Features a clean white arch sign with custom lettering and a graduation cap illustration, adorned with a gorgeous organic balloon garland in white, black, and gold with black ribbon bows.">
-                <div class="portfolio-media">
-                    <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Graduation Arch Backdrop">
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Graduations</span>
-                    <h3>Congrats Kabya Graduation Arch</h3>
-                    <div class="portfolio-location"><i class="fas fa-map-marker-alt"></i> Rockville, MD</div>
-                </div>
+            <div class="thumbnail" data-index="3">
+                <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Graduation Arch">
             </div>
-
-            <!-- Item 5: Graduation Table Details -->
-            <div class="portfolio-item" data-category="graduation" data-video="false" data-src="assets/images/portfolio/graduation_2_enhanced.png" data-desc="Intricate table setting details designed by DiyoDecors for a graduation celebration. Features glossy dark wood guest tables reflecting upside-down crystal glassware, custom congrats graduation favor boxes, elegant dark linens, and our signature Diyo Decors card.">
-                <div class="portfolio-media">
-                    <img src="assets/images/portfolio/graduation_2_enhanced.png" alt="Graduation Table Details">
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Graduations</span>
-                    <h3>Graduation Table Details</h3>
-                    <div class="portfolio-location"><i class="fas fa-map-marker-alt"></i> Rockville, MD</div>
-                </div>
+            <div class="thumbnail" data-index="4">
+                <img src="assets/images/portfolio/graduation_2_enhanced.png" alt="Graduation Table">
             </div>
-
-
         </div>
     </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
-        <button class="lightbox-nav lightbox-prev" aria-label="Previous Image"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox-nav lightbox-next" aria-label="Next Image"><i class="fas fa-chevron-right"></i></button>
-        <div class="lightbox-content-wrapper">
-            <div class="lightbox-media-container">
-                <!-- Dynamically populated via JS -->
-            </div>
-            <div class="lightbox-details">
-                <span class="portfolio-tag">Category</span>
-                <h2>Event Title</h2>
-                <div class="lightbox-location"><span><i class="fas fa-map-marker-alt"></i> Location</span></div>
-                <p>Detailed event explanation story goes here.</p>
-                <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
-            </div>
-        </div>
-    </div>
 
     <!-- Call to Action -->
     <section class="cta">
@@ -181,10 +186,10 @@
             <div class="footer-links">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="portfolio.html?filter=wedding">Weddings</a></li>
-                    <li><a href="portfolio.html?filter=birthday">Birthdays</a></li>
-                    <li><a href="portfolio.html?filter=birthday">Baby Showers</a></li>
-                    <li><a href="portfolio.html?filter=traditional">Traditional Ceremonies</a></li>
+                    <li><a href="portfolio.html">Weddings</a></li>
+                    <li><a href="portfolio.html">Birthdays</a></li>
+                    <li><a href="portfolio.html">Baby Showers</a></li>
+                    <li><a href="portfolio.html">Traditional Ceremonies</a></li>
                 </ul>
             </div>
 
@@ -208,20 +213,6 @@
     <!-- Scripts -->
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/script.js"></script>
-    
-    <!-- URL parameter pre-filter helper -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const filterParam = urlParams.get('filter');
-            if (filterParam) {
-                const btn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
-                if (btn) {
-                    btn.click();
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
