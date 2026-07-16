@@ -352,27 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Portfolio Slideshow Controller
     const slides = document.querySelectorAll('.slide');
     const details = document.querySelectorAll('.slide-details');
-    const thumbnails = document.querySelectorAll('.thumbnail');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
-    if (slides.length > 0 && details.length > 0 && thumbnails.length > 0) {
+    if (slides.length > 0 && details.length > 0) {
         let currentSlideIndex = 0;
 
         const showSlide = (index) => {
-            // Pause any playing videos before switching slides
-            const activeSlide = document.querySelector('.slide.active');
-            if (activeSlide) {
-                const activeVideo = activeSlide.querySelector('video');
-                if (activeVideo) {
-                    activeVideo.pause();
-                }
-            }
-
             // Remove active classes
             slides.forEach(s => s.classList.remove('active'));
             details.forEach(d => d.classList.remove('active'));
-            thumbnails.forEach(t => t.classList.remove('active'));
 
             // Set new active slide index
             currentSlideIndex = index;
@@ -380,16 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active classes
             slides[currentSlideIndex].classList.add('active');
             details[currentSlideIndex].classList.add('active');
-            thumbnails[currentSlideIndex].classList.add('active');
-
-            // Autoplay video if the new slide is a video
-            const newVideo = slides[currentSlideIndex].querySelector('video');
-            if (newVideo) {
-                newVideo.currentTime = 0;
-                newVideo.play().catch(e => {
-                    console.log("Autoplay prevented:", e);
-                });
-            }
         };
 
         const nextSlide = () => {
@@ -409,14 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextBtn) {
             nextBtn.addEventListener('click', nextSlide);
         }
-
-        // Thumbnail click listeners
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', () => {
-                const index = parseInt(thumb.getAttribute('data-index'), 10);
-                showSlide(index);
-            });
-        });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
