@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn ? btn.textContent : 'Send Inquiry';
             
@@ -557,22 +558,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Custom Event Type Toggle & URL Query Param Auto-select (Contact Form)
+    // Custom Event Type Toggle, Dynamic Vision Placeholder & URL Query Param Auto-select
     const eventSelect = document.getElementById('event');
     const customEventGroup = document.getElementById('custom-event-group');
     const customEventInput = document.getElementById('custom_event');
+    const messageInput = document.getElementById('message');
 
-    if (eventSelect && customEventGroup && customEventInput) {
+    const visionPlaceholders = {
+        'wedding': 'E.g., Mandap preferences, stage backdrop style, color theme (gold, crimson, pastel), bridal entry walkway, floral choices...',
+        'birthday': 'E.g., Birthday theme (balloon arch, floral backdrop, character theme), cake table setup, photo booth backdrop...',
+        'babyshower': 'E.g., Theme (Oh Baby, teddy bear, cloud/floral), gender hints, dessert table setup, photo backdrop...',
+        'gender_reveal': 'E.g., Reveal surprise mechanism, balloon box/arch, pink & blue color scheme, dessert table setup...',
+        'graduation': 'E.g., School/university colors, photo backdrop with year, marquee numbers, balloon garland style...',
+        'pasni': 'E.g., Rice feeding ceremonial stage setup, traditional red/gold color accents, cushion seating, thali backdrop...',
+        'bartabanda': 'E.g., Sacred thread ceremony stage setup, mandap/puja backdrop, traditional brass diyos, family seating layout...',
+        'gunyo_cholo': 'E.g., Coming of age celebration stage, red & gold traditional fabric drapery, photo booth, floral backdrop...',
+        'diwali': 'E.g., Traditional marigold garlands, brass diyo arrangements, rangoli decor setup, festive lighting...',
+        'pujas': 'E.g., Puja altar/stage setup, specific floral garlands, traditional copper/brass diyos, sacred cloth drapery...',
+        'anniversaries': 'E.g., Milestone theme (Silver, Gold, Diamond), romantic candlelit decor, photo memory wall...',
+        'dance_choreography': 'E.g., Dance style (Bollywood, Nepali traditional, Sangeet group dance), number of songs, rehearsal timeline...',
+        'other': 'Tell us more about your design vision, preferred colors, traditional requirements, or any questions you have for us...'
+    };
+
+    function updateVisionPlaceholder() {
+        if (!messageInput) return;
+        const selectedEvent = eventSelect.value;
+        if (selectedEvent && visionPlaceholders[selectedEvent]) {
+            messageInput.placeholder = visionPlaceholders[selectedEvent];
+        } else {
+            messageInput.placeholder = 'Tell us more about your design vision, preferred colors, traditional requirements (Mandap, Pasni, etc.), or questions...';
+        }
+    }
+
+    if (eventSelect) {
         eventSelect.addEventListener('change', () => {
-            if (eventSelect.value === 'other') {
-                customEventGroup.style.display = 'block';
-                customEventInput.required = true;
-                customEventInput.focus();
-            } else {
-                customEventGroup.style.display = 'none';
-                customEventInput.required = false;
-                customEventInput.value = '';
+            if (customEventGroup && customEventInput) {
+                if (eventSelect.value === 'other') {
+                    customEventGroup.style.display = 'block';
+                    customEventInput.required = true;
+                    customEventInput.focus();
+                } else {
+                    customEventGroup.style.display = 'none';
+                    customEventInput.required = false;
+                    customEventInput.value = '';
+                }
             }
+            updateVisionPlaceholder();
         });
 
         // Contact Form URL Query Parameter Pre-selection (e.g. contact.html?service=gunyo-cholo)
@@ -604,6 +635,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 eventSelect.dispatchEvent(new Event('change'));
             }
         }
+    }
+
+    // ==========================================================================
+    // Services Carousel Controller (Arrows & Dots for Mobile/Tablet)
+    // ==========================================================================
+    const servicesGrid = document.querySelector('.services-grid');
+    const servicesPrevBtn = document.querySelector('.services-prev');
+    const servicesNextBtn = document.querySelector('.services-next');
+    const servicesDotsContainer = document.querySelector('.services-dots');
+
+    if (servicesGrid) {
+        const cards = Array.from(servicesGrid.querySelectorAll('.service-card'));
+        
+        // Generate pagination dots
+        if (servicesDotsContainer && cards.length > 0) {
+            servicesDotsContainer.innerHTML = '';
+            cards.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.classList.add('services-dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.setAttribute('data-index', idx);
+                dot.setAttribute('aria-label', `Go to service ${idx + 1}`);
+                servicesDotsContainer.appendChild(dot);
+
+                dot.addEventListener('click', () => {
+                    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        }
+
+        // Arrow navigation
+        const getScrollStep = () => {
+            if (cards.length > 0) {
+                const style = window.getComputedStyle(cards[0]);
+                const margin = parseFloat(style.marginRight) || 16;
+                return cards[0].offsetWidth + margin;
+            }
+            return 300;
+        };
+
+        if (servicesPrevBtn) {
+            servicesPrevBtn.addEventListener('click', () => {
+                servicesGrid.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+            });
+        }
+
+        if (servicesNextBtn) {
+            servicesNextBtn.addEventListener('click', () => {
+                servicesGrid.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+            });
+        }
+
+        // Active dot sync on scroll
+        let isTicking = false;
+        servicesGrid.addEventListener('scroll', () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    if (servicesDotsContainer && cards.length > 0) {
+                        const dots = servicesDotsContainer.querySelectorAll('.services-dot');
+                        const gridRect = servicesGrid.getBoundingClientRect();
+                        const gridCenter = gridRect.left + gridRect.width / 2;
+
+                        let closestIndex = 0;
+                        let minDistance = Infinity;
+
+                        cards.forEach((card, idx) => {
+                            const cardRect = card.getBoundingClientRect();
+                            const cardCenter = cardRect.left + cardRect.width / 2;
+                            const distance = Math.abs(cardCenter - gridCenter);
+
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                closestIndex = idx;
+                            }
+                        });
+
+                        dots.forEach((dot, idx) => {
+                            dot.classList.toggle('active', idx === closestIndex);
+                        });
+                    }
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        }, { passive: true });
     }
 });
 

@@ -66,7 +66,7 @@
           referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.2.1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.4.0">
 </head>
 
 <body>
@@ -96,10 +96,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('assets/images/hero-wedding.png');"></div>
+            <div class="hero-slide active" style="background-image: url('assets/images/portfolio/pasni_1_enhanced.png');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/hero-wedding.png');"></div>
             <div class="hero-slide" style="background-image: url('assets/images/service-gunyo-cholo.png');"></div>
             <div class="hero-slide" style="background-image: url('assets/images/service-diwali.png');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/service-pasni.png');"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="floating-diyos"></div>
@@ -142,174 +142,182 @@
             <h2>Our <span class="text-gold">Expertise</span></h2>
             <p>From grand celebrations to intimate traditional ceremonies, we provide bespoke decoration services
                 tailored to your vision.</p>
+            <p class="mobile-swipe-hint"><i class="fa-solid fa-hand-pointer"></i> Swipe sideways to explore our services <i class="fa-solid fa-arrow-right-long"></i></p>
         </div>
 
-        <div class="services-grid">
-            <!-- Wedding -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/hero-wedding.png" alt="Wedding Decoration" loading="lazy">
+        <div class="services-carousel-wrapper">
+            <button class="services-nav services-prev" aria-label="Previous Service"><i class="fas fa-chevron-left"></i></button>
+            
+            <div class="services-grid">
+                <!-- Wedding -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/hero-wedding.png" alt="Wedding Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-ring"></i><i class="fa-solid fa-heart"></i></div>
+                        <h3>Weddings</h3>
+                        <p>Luxurious mandaps, breathtaking stage setups, and elegant floral arrangements that make your big
+                            day truly magical.</p>
+                        <a href="contact.html?service=weddings" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-ring"></i><i class="fa-solid fa-heart"></i></div>
-                    <h3>Weddings</h3>
-                    <p>Luxurious mandaps, breathtaking stage setups, and elegant floral arrangements that make your big
-                        day truly magical.</p>
-                    <a href="contact.html?service=weddings" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+
+                <!-- Birthday -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-birthday.png" alt="Birthday Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                        <h3>Birthdays</h3>
+                        <p>Creative themes, vibrant balloon setups, and stunning photo backdrops for birthdays of all ages.
+                        </p>
+                        <a href="contact.html?service=birthdays" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Baby Shower -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-babyshower.png" alt="Baby Shower Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-baby-carriage"></i></div>
+                        <h3>Baby Shower</h3>
+                        <p>Soft, elegant, and joyful setups to welcome the new arrival, tailored perfectly to your chosen
+                            theme.</p>
+                        <a href="contact.html?service=babyshower" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Gender Reveal -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-gender-reveal.png" alt="Gender Reveal Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-venus-mars"></i></div>
+                        <h3>Gender Reveal</h3>
+                        <p>Exciting and highly photogenic decors to make the big announcement an unforgettable moment.</p>
+                        <a href="contact.html?service=gender-reveal" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Graduations -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Graduation Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>Graduations</h3>
+                        <p>Stunning balloon arches, custom backdrop signs, and elegant table arrangements to celebrate your major academic milestones.</p>
+                        <a href="contact.html?service=graduations" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Pasni -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-om"></i></div>
+                        <h3>Pasni</h3>
+                        <p>Traditional and beautiful decorations honoring the sacred rice-feeding ceremony with cultural
+                            elegance.</p>
+                        <a href="contact.html?service=pasni" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Bartabanda -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-bartabanda.png" alt="Bartabanda Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-fire"></i></div>
+                        <h3>Bartabanda</h3>
+                        <p>Authentic and grand setups for the sacred thread ceremony, incorporating traditional brass items
+                            and marigolds.</p>
+                        <a href="contact.html?service=bartabanda" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Gunyo Cholo -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-gunyo-cholo.png" alt="Gunyo Cholo Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-child"></i></div>
+                        <h3>Gunyo Cholo</h3>
+                        <p>Beautiful, culturally rich setups featuring vibrant red, green, and gold colors for the
+                            traditional coming-of-age ceremony.</p>
+                        <a href="contact.html?service=gunyo-cholo" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Diwali & Festivals -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-diwali.png" alt="Diwali Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3>Diwali & Festivals</h3>
+                        <p>Stunning setups for Diwali and other festivals, complete with glowing diyos, floral rangolis, and
+                            magical lighting.</p>
+                        <a href="contact.html?service=diwali" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Special Pujas -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-pujas.png" alt="Puja Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-hands-praying"></i></div>
+                        <h3>Special Pujas</h3>
+                        <p>Serene, elegant, and peaceful floral and traditional decor to create the perfect spiritual
+                            atmosphere for religious ceremonies.</p>
+                        <a href="contact.html?service=pujas" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Anniversaries -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-anniversaries.png" alt="Anniversary Decoration" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                        <h3>Anniversaries</h3>
+                        <p>Luxurious, sophisticated decor for milestone anniversaries, featuring elegant fabrics, crystal
+                            touches, and beautiful florals.</p>
+                        <a href="contact.html?service=anniversaries" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dance Choreography -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/images/service-dance.png" alt="Dance Choreography" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-music"></i></div>
+                        <h3>Dance Choreography</h3>
+                        <p>Professional choreography services for weddings, sangeet, and festive celebrations to make your performances spectacular and memorable.</p>
+                        <a href="contact.html?service=dance" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Birthday -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-birthday.png" alt="Birthday Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-cake-candles"></i></div>
-                    <h3>Birthdays</h3>
-                    <p>Creative themes, vibrant balloon setups, and stunning photo backdrops for birthdays of all ages.
-                    </p>
-                    <a href="contact.html?service=birthdays" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Baby Shower -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-babyshower.png" alt="Baby Shower Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-baby-carriage"></i></div>
-                    <h3>Baby Shower</h3>
-                    <p>Soft, elegant, and joyful setups to welcome the new arrival, tailored perfectly to your chosen
-                        theme.</p>
-                    <a href="contact.html?service=babyshower" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Gender Reveal -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-gender-reveal.png" alt="Gender Reveal Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-venus-mars"></i></div>
-                    <h3>Gender Reveal</h3>
-                    <p>Exciting and highly photogenic decors to make the big announcement an unforgettable moment.</p>
-                    <a href="contact.html?service=gender-reveal" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Graduations -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Graduation Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h3>Graduations</h3>
-                    <p>Stunning balloon arches, custom backdrop signs, and elegant table arrangements to celebrate your major academic milestones.</p>
-                    <a href="contact.html?service=graduations" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Pasni -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-pasni.png" alt="Pasni Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-om"></i></div>
-                    <h3>Pasni</h3>
-                    <p>Traditional and beautiful decorations honoring the sacred rice-feeding ceremony with cultural
-                        elegance.</p>
-                    <a href="contact.html?service=pasni" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Bartabanda -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-bartabanda.png" alt="Bartabanda Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-fire"></i></div>
-                    <h3>Bartabanda</h3>
-                    <p>Authentic and grand setups for the sacred thread ceremony, incorporating traditional brass items
-                        and marigolds.</p>
-                    <a href="contact.html?service=bartabanda" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Gunyo Cholo -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-gunyo-cholo.png" alt="Gunyo Cholo Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-child"></i></div>
-                    <h3>Gunyo Cholo</h3>
-                    <p>Beautiful, culturally rich setups featuring vibrant red, green, and gold colors for the
-                        traditional coming-of-age ceremony.</p>
-                    <a href="contact.html?service=gunyo-cholo" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Diwali & Festivals -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-diwali.png" alt="Diwali Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>Diwali & Festivals</h3>
-                    <p>Stunning setups for Diwali and other festivals, complete with glowing diyos, floral rangolis, and
-                        magical lighting.</p>
-                    <a href="contact.html?service=diwali" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Special Pujas -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-pujas.png" alt="Puja Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-hands-praying"></i></div>
-                    <h3>Special Pujas</h3>
-                    <p>Serene, elegant, and peaceful floral and traditional decor to create the perfect spiritual
-                        atmosphere for religious ceremonies.</p>
-                    <a href="contact.html?service=pujas" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Anniversaries -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-anniversaries.png" alt="Anniversary Decoration" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                    <h3>Anniversaries</h3>
-                    <p>Luxurious, sophisticated decor for milestone anniversaries, featuring elegant fabrics, crystal
-                        touches, and beautiful florals.</p>
-                    <a href="contact.html?service=anniversaries" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <!-- Dance Choreography -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="assets/images/service-dance.png" alt="Dance Choreography" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <div class="service-icon"><i class="fa-solid fa-music"></i></div>
-                    <h3>Dance Choreography</h3>
-                    <p>Professional choreography services for weddings, sangeet, and festive celebrations to make your performances spectacular and memorable.</p>
-                    <a href="contact.html?service=dance" class="service-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
+            <button class="services-nav services-next" aria-label="Next Service"><i class="fas fa-chevron-right"></i></button>
         </div>
+        <div class="services-dots"></div>
     </section>
 
     <!-- Testimonials Section (Hidden until real client testimonials are provided)
@@ -443,7 +451,7 @@
 
     <!-- Scripts -->
     <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=1.2.1"></script>
+    <script src="assets/js/script.js?v=1.4.0"></script>
 </body>
 
 </html>
