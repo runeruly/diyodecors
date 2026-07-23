@@ -1100,8 +1100,49 @@ footer {
         right: 0;
     }
 
-    .hero h1 { font-size: 2.5rem; }
-    .hero-btns { flex-direction: column; }
+    /* Mobile Hero Layout Fixes */
+    .hero {
+        padding: 100px 6% 60px;
+        min-height: 100vh;
+        justify-content: center;
+    }
+    .hero-content {
+        padding: 0;
+        text-align: center;
+        max-width: 100%;
+    }
+    .hero h1 { 
+        font-size: 2.2rem; 
+        margin-bottom: 15px;
+        line-height: 1.15;
+    }
+    .hero p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 30px;
+        padding: 0 5px;
+    }
+    .hero-btns { 
+        flex-direction: column; 
+        gap: 12px;
+        width: 100%;
+    }
+    .hero-btns .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+    
+    /* Hide Side Nav Arrows on Mobile to Prevent Text Overlap */
+    .hero-nav { 
+        display: none !important; 
+    }
+    .hero-dots { 
+        bottom: 18px; 
+    }
+
+    /* Footer & Grid Responsiveness */
     .footer-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     
@@ -1110,6 +1151,19 @@ footer {
     }
     
     .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Portfolio Mobile Responsiveness */
+    .portfolio-filters {
+        gap: 8px;
+        margin: 25px 0 35px;
+    }
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    .portfolio-grid {
         grid-template-columns: 1fr;
     }
 }
