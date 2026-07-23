@@ -9,6 +9,42 @@
     <title>Contact Us | DiyoDecors</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
 
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DiyoDecors">
+    <meta property="og:title" content="Contact Us | DiyoDecors - Book Event Styling & Decoration">
+    <meta property="og:description" content="Reach out to DiyoDecors for a personalized event consultation in DC, MD, and VA. Elevate your celebration with our luxury decoration services.">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://diyodecors.com/contact.html">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us | DiyoDecors - Book Event Styling & Decoration">
+    <meta name="twitter:description" content="Reach out to DiyoDecors for a personalized event consultation in DC, MD, and VA. Elevate your celebration with our luxury decoration services.">
+    <meta name="twitter:image" content="assets/images/logo.png">
+
+    <!-- LocalBusiness / EventPlanner Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventPlanner",
+      "name": "DiyoDecors",
+      "image": "https://diyodecors.com/assets/images/logo.png",
+      "@id": "https://diyodecors.com",
+      "url": "https://diyodecors.com/contact.html",
+      "telephone": "+1-301-281-7165",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Germantown",
+        "addressRegion": "MD",
+        "postalCode": "20876",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Washington DC", "Maryland", "Virginia", "Germantown MD", "Rockville MD"]
+    }
+    </script>
+
     <!-- Font Awesome with SRI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
@@ -16,7 +52,7 @@
           referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.1.1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.2.0">
 </head>
 
 <body>
@@ -83,7 +119,26 @@
                     </div>
                 </div>
 
-                <div class="social-links" style="margin-top: 40px;">
+                <!-- What to Expect Box -->
+                <div class="expectations-box" style="margin-top: 30px; padding: 22px; background: rgba(255, 251, 239, 0.7); border: 1px solid rgba(179, 139, 34, 0.3); border-radius: 15px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 12px; color: var(--primary-dark-gold);"><i class="fas fa-clock text-gold"></i> What to Expect Next</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; color: var(--text-dark);">
+                        <li style="display: flex; gap: 8px; align-items: flex-start;">
+                            <strong style="color: var(--primary-dark-gold);">1.</strong>
+                            <span><strong>Fast Confirmation:</strong> We check date availability within 24 hours.</span>
+                        </li>
+                        <li style="display: flex; gap: 8px; align-items: flex-start;">
+                            <strong style="color: var(--primary-dark-gold);">2.</strong>
+                            <span><strong>Consultation:</strong> We discuss your preferred theme, colors, and layout ideas.</span>
+                        </li>
+                        <li style="display: flex; gap: 8px; align-items: flex-start;">
+                            <strong style="color: var(--primary-dark-gold);">3.</strong>
+                            <span><strong>Custom Proposal:</strong> We provide a tailored design quote to lock in your date.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="social-links" style="margin-top: 30px;">
                     <a href="https://www.facebook.com/share/1BFWro3nC5/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/diyo_decors" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.tiktok.com/@diyo.decors" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
@@ -258,7 +313,7 @@
 
     <!-- Scripts -->
     <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=1.1.5"></script>
+    <script src="assets/js/script.js?v=1.2.0"></script>
 </body>
 
 </html>

@@ -1387,3 +1387,501 @@ footer {
     }
 }
 
+/* ==========================================================================
+   Hero Slider Controls
+   ========================================================================== */
+.hero-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(13, 8, 6, 0.6);
+    color: var(--primary-gold);
+    border: 1px solid rgba(226, 183, 64, 0.4);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.hero-prev { left: 25px; }
+.hero-next { right: 25px; }
+
+.hero-nav:hover {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(226, 183, 64, 0.5);
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 10px;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(226, 183, 64, 0.4);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-dot.active,
+.hero-dot:hover {
+    background: var(--primary-gold);
+    width: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(226, 183, 64, 0.6);
+}
+
+
+/* ==========================================================================
+   Testimonials Sliding Carousel
+   ========================================================================== */
+.testimonials {
+    background-color: #0d0806;
+    padding: 90px 8%;
+    position: relative;
+}
+
+.testimonials-carousel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto 0;
+    display: flex;
+    align-items: center;
+}
+
+.testimonials-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 250px;
+}
+
+.testimonial-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    background: var(--bg-card);
+    border: 1px solid rgba(226, 183, 64, 0.2);
+    border-radius: 20px;
+    padding: 40px 50px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateX(40px);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transform: translateX(0);
+}
+
+.testimonial-card .stars {
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.testimonial-card .quote {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.testimonial-card .client-info h4 {
+    font-family: var(--font-heading);
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.testimonial-card .client-info span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(226, 183, 64, 0.1);
+    color: var(--primary-gold);
+    border: 1px solid rgba(226, 183, 64, 0.4);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.prev-testimonial { left: -60px; }
+.next-testimonial { right: -60px; }
+
+.testimonial-nav:hover {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(226, 183, 64, 0.4);
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(226, 183, 64, 0.25);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.testimonial-dot.active,
+.testimonial-dot:hover {
+    background: var(--primary-gold);
+    width: 25px;
+    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .prev-testimonial { left: -15px; }
+    .next-testimonial { right: -15px; }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 30px 20px;
+    }
+    .testimonial-card .quote {
+        font-size: 1rem;
+    }
+    .prev-testimonial, .next-testimonial {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   Filterable Portfolio Grid & Category Tabs
+   ========================================================================== */
+.portfolio-section {
+    padding: 70px 8% 100px;
+    background: var(--bg-dark);
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px 0 50px;
+}
+
+.filter-btn {
+    background: rgba(226, 183, 64, 0.08);
+    color: var(--text-muted);
+    border: 1px solid rgba(226, 183, 64, 0.25);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    border-color: var(--primary-gold);
+    box-shadow: 0 4px 15px rgba(226, 183, 64, 0.3);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(226, 183, 64, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(226, 183, 64, 0.15);
+    border-color: rgba(226, 183, 64, 0.4);
+}
+
+.portfolio-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.portfolio-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-img-wrap img {
+    transform: scale(1.08);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 8, 6, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-zoom-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-zoom-icon {
+    transform: scale(1);
+}
+
+.portfolio-card-info {
+    padding: 20px 22px;
+}
+
+.portfolio-tag {
+    display: inline-block;
+    background: rgba(226, 183, 64, 0.15);
+    color: var(--primary-gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.portfolio-card-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.portfolio-loc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   Full-Screen Modal Lightbox
+   ========================================================================== */
+.portfolio-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.portfolio-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 3, 2, 0.92);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1050px;
+    max-height: 90vh;
+    background: var(--bg-card);
+    border: 1px solid rgba(226, 183, 64, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(226, 183, 64, 0.2);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--primary-gold);
+    border: 1px solid rgba(226, 183, 64, 0.4);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--primary-gold);
+    border: 1px solid rgba(226, 183, 64, 0.4);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-nav:hover {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+}
+
+.lightbox-body {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    min-height: 450px;
+}
+
+.lightbox-img-container {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.lightbox-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lightbox-details {
+    padding: 45px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lightbox-details h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-main);
+    margin: 12px 0 8px;
+}
+
+.lightbox-details p#lightboxDesc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 20px 0 30px;
+}
+
+@media (max-width: 880px) {
+    .lightbox-body {
+        grid-template-columns: 1fr;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    .lightbox-img-container {
+        height: 280px;
+        min-height: auto;
+    }
+    .lightbox-details {
+        padding: 25px 20px;
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+}
+

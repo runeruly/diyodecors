@@ -5,9 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://api.web3forms.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
-    <meta name="description" content="DiyoDecors Portfolio - Explore our past premium event decorations, featuring luxury weddings, traditional Pasni and Bartabanda setups, and stunning birthday arrangements.">
+    <meta name="description" content="DiyoDecors Portfolio - Explore our past luxury event decorations, featuring weddings, traditional Pasni and Bartabanda setups, graduations, and birthday arrangements in DC, MD, and VA.">
     <title>Portfolio | DiyoDecors</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DiyoDecors">
+    <meta property="og:title" content="Portfolio | DiyoDecors - Event Decoration Gallery">
+    <meta property="og:description" content="Explore our past luxury event decorations, featuring weddings, traditional Pasni setups, graduations, and birthdays in DC, MD, and VA.">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://diyodecors.com/portfolio.html">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio | DiyoDecors - Event Decoration Gallery">
+    <meta name="twitter:description" content="Explore our past luxury event decorations, featuring weddings, traditional Pasni setups, graduations, and birthdays in DC, MD, and VA.">
+    <meta name="twitter:image" content="assets/images/logo.png">
+
+    <!-- LocalBusiness / EventPlanner Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventPlanner",
+      "name": "DiyoDecors",
+      "image": "https://diyodecors.com/assets/images/logo.png",
+      "@id": "https://diyodecors.com",
+      "url": "https://diyodecors.com/portfolio.html",
+      "telephone": "+1-301-281-7165",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Germantown",
+        "addressRegion": "MD",
+        "postalCode": "20876",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Washington DC", "Maryland", "Virginia", "Germantown MD", "Rockville MD"]
+    }
+    </script>
 
     <!-- Font Awesome with SRI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
@@ -16,7 +52,7 @@
           referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.1.1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.2.0">
 </head>
 
 <body>
@@ -49,73 +85,227 @@
         <h1>Our <span class="text-gold">Portfolio</span></h1>
     </div>
 
-    <!-- Slideshow Section -->
-    <section class="slideshow-section">
-        <div class="portfolio-slideshow">
-            <!-- Left Side: Media display -->
-            <div class="slideshow-main">
-                <div class="slides-container">
-                    <!-- Slide 1: Pasni Stage Setup -->
-                    <div class="slide active" data-type="image">
-                        <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Ceremony Stage">
-                    </div>
-                    <!-- Slide 2: Pasni Hall Decor -->
-                    <div class="slide" data-type="image">
-                        <img src="assets/images/portfolio/pasni_2_enhanced.png" alt="Pasni Celebration Hall">
-                    </div>
-                    <!-- Slide 3: Graduation Arch Backdrop -->
-                    <div class="slide" data-type="image">
-                        <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Congrats Kabya Graduation Arch">
-                    </div>
-                    <!-- Slide 4: Graduation Table Setting Details -->
-                    <div class="slide" data-type="image">
-                        <img src="assets/images/portfolio/graduation_2_enhanced.png" alt="Graduation Table Details">
+    <!-- Filterable Portfolio Grid Section -->
+    <section class="portfolio-section">
+        <div class="section-header">
+            <h2>Explore Our <span class="text-gold">Creations</span></h2>
+            <p>Filter through our past event decorations across Washington DC, Maryland, and Virginia. Click any project to view full details.</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="traditional">Traditional Ceremonies</button>
+            <button class="filter-btn" data-filter="graduations">Graduations</button>
+            <button class="filter-btn" data-filter="weddings">Weddings & Anniversaries</button>
+            <button class="filter-btn" data-filter="birthdays">Birthdays & Baby Showers</button>
+        </div>
+
+        <!-- Filterable Portfolio Grid -->
+        <div class="portfolio-grid">
+            <!-- Item 1: Pasni Stage -->
+            <div class="portfolio-card" data-category="traditional" data-title="Pasni Ceremony Stage" data-location="Germantown, MD" data-desc="An enhanced traditional Nepalese Pasni ceremony setup featuring a red draped shell sofa, gold sequined backdrop, and vibrant red and white drapes." data-image="assets/images/portfolio/pasni_1_enhanced.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/portfolio/pasni_1_enhanced.png" alt="Pasni Ceremony Stage" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
                 </div>
-                
-                <!-- Navigation Arrows -->
-                <button class="slide-nav prev-btn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-                <button class="slide-nav next-btn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h3>Pasni Ceremony Stage</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</p>
+                </div>
             </div>
-            
-            <!-- Right Side: Details display -->
-            <div class="slideshow-info">
-                <!-- Details 1 -->
-                <div class="slide-details active">
+
+            <!-- Item 2: Pasni Hall Decor -->
+            <div class="portfolio-card" data-category="traditional" data-title="Pasni Celebration Hall" data-location="Germantown, MD" data-desc="Elegant banquet hall configuration for Pasni celebration with red satin runners, floral arrangements, and custom lighting." data-image="assets/images/portfolio/pasni_2_enhanced.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/portfolio/pasni_2_enhanced.png" alt="Pasni Celebration Hall" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
                     <span class="portfolio-tag">Traditional</span>
-                    <h2>Pasni Ceremony Stage</h2>
-                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</div>
-                    <p>An enhanced look of our traditional Nepalese Pasni ceremony setup. The focus is on a stunning white shell-shaped sofa draped in red fabric, set against a shimmering gold sequined curtain and flanked by soft red and white drapes with floral accents.</p>
-                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                    <h3>Pasni Celebration Hall</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</p>
                 </div>
-                <!-- Details 2 -->
-                <div class="slide-details">
+            </div>
+
+            <!-- Item 3: Graduation Arch -->
+            <div class="portfolio-card" data-category="graduations" data-title="Congrats Kabya Graduation Arch" data-location="Rockville, MD" data-desc="Custom organic balloon garland arch in black, white, and gold with personalized arch backdrop sign for Class of 2026." data-image="assets/images/portfolio/graduation_1_enhanced.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/portfolio/graduation_1_enhanced.png" alt="Congrats Kabya Graduation Arch" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Graduations</span>
+                    <h3>Graduation Backdrop Arch</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</p>
+                </div>
+            </div>
+
+            <!-- Item 4: Graduation Table Setting -->
+            <div class="portfolio-card" data-category="graduations" data-title="Graduation Table Details" data-location="Rockville, MD" data-desc="Intricate table setting details featuring glossy dark wood tables, crystal glassware, custom favor boxes, and signature Diyo cards." data-image="assets/images/portfolio/graduation_2_enhanced.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/portfolio/graduation_2_enhanced.png" alt="Graduation Table Details" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Graduations</span>
+                    <h3>Graduation Table Details</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</p>
+                </div>
+            </div>
+
+            <!-- Item 5: Luxury Wedding Mandap -->
+            <div class="portfolio-card" data-category="weddings" data-title="Luxury Wedding Mandap" data-location="Bethesda, MD" data-desc="Breathtaking wedding mandap with royal gold accents, lush floral arrangements, and warm ambient lighting." data-image="assets/images/hero-wedding.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/hero-wedding.png" alt="Luxury Wedding Mandap" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Weddings</span>
+                    <h3>Luxury Wedding Mandap</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Bethesda, MD</p>
+                </div>
+            </div>
+
+            <!-- Item 6: Bartabanda Ceremony Setup -->
+            <div class="portfolio-card" data-category="traditional" data-title="Bartabanda Ceremony Setup" data-location="Gaithersburg, MD" data-desc="Authentic sacred thread ceremony setup incorporating traditional brass vessels, fresh marigold garlands, and ritual seating." data-image="assets/images/service-bartabanda.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-bartabanda.png" alt="Bartabanda Ceremony Setup" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
                     <span class="portfolio-tag">Traditional</span>
-                    <h2>Pasni Celebration Hall</h2>
-                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</div>
-                    <p>A wider perspective of the elegant banquet hall configured for a Pasni celebration. The space is arranged with white guest linens, red satin runners, floral arrangements, and a wooden dance floor leading to the central gold and red stage setup.</p>
-                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                    <h3>Bartabanda Sacred Setup</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Gaithersburg, MD</p>
                 </div>
-                <!-- Details 3 -->
-                <div class="slide-details">
-                    <span class="portfolio-tag">Graduations</span>
-                    <h2>Congrats Kabya Graduation Arch</h2>
-                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</div>
-                    <p>A beautiful custom graduation arch backdrop designed for Kabya's Class of 2026 celebration. Features a clean white arch sign with custom lettering and a graduation cap illustration, adorned with a gorgeous organic balloon garland in white, black, and gold with black ribbon bows.</p>
-                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+            </div>
+
+            <!-- Item 7: Gunyo Cholo Celebration -->
+            <div class="portfolio-card" data-category="traditional" data-title="Gunyo Cholo Backdrop" data-location="Silver Spring, MD" data-desc="Vibrant red, green, and gold coming-of-age ceremony backdrop with cultural motifs and elegant seating." data-image="assets/images/service-gunyo-cholo.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-gunyo-cholo.png" alt="Gunyo Cholo Backdrop" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
                 </div>
-                <!-- Details 4 -->
-                <div class="slide-details">
-                    <span class="portfolio-tag">Graduations</span>
-                    <h2>Graduation Table Details</h2>
-                    <div class="slide-location"><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</div>
-                    <p>Intricate table setting details designed by DiyoDecors for a graduation celebration. Features glossy dark wood guest tables reflecting upside-down crystal glassware, custom congrats graduation favor boxes, elegant dark linens, and our signature Diyo Decors card.</p>
-                    <a href="contact.html" class="btn btn-primary">Book Similar Setup</a>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h3>Gunyo Cholo Backdrop</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Silver Spring, MD</p>
+                </div>
+            </div>
+
+            <!-- Item 8: Birthday Party Backdrop -->
+            <div class="portfolio-card" data-category="birthdays" data-title="Vibrant Birthday Backdrop" data-location="Fairfax, VA" data-desc="Creative theme decoration with organic balloon sculptures, personalized backdrop signage, and cake table display." data-image="assets/images/service-birthday.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-birthday.png" alt="Vibrant Birthday Backdrop" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Birthdays</span>
+                    <h3>Vibrant Birthday Backdrop</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Fairfax, VA</p>
+                </div>
+            </div>
+
+            <!-- Item 9: Baby Shower Celebration -->
+            <div class="portfolio-card" data-category="birthdays" data-title="Soft Pastel Baby Shower" data-location="Tysons, VA" data-desc="Soft, elegant pastel arch and floral setup to welcome the new arrival in style." data-image="assets/images/service-babyshower.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-babyshower.png" alt="Soft Pastel Baby Shower" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Birthdays</span>
+                    <h3>Pastel Baby Shower Setup</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Tysons, VA</p>
+                </div>
+            </div>
+
+            <!-- Item 10: Milestone Anniversary Gala -->
+            <div class="portfolio-card" data-category="weddings" data-title="Milestone Anniversary Setup" data-location="Washington, DC" data-desc="Sophisticated decor with crystal accents, deep burgundy drapes, and warm candle illumination." data-image="assets/images/service-anniversaries.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-anniversaries.png" alt="Milestone Anniversary Setup" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Weddings</span>
+                    <h3>Milestone Anniversary Setup</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Washington, DC</p>
+                </div>
+            </div>
+
+            <!-- Item 11: Diwali Festival Setup -->
+            <div class="portfolio-card" data-category="traditional" data-title="Diwali Light Festival Setup" data-location="Germantown, MD" data-desc="Radiant festival decor featuring handcrafted diyos, floral rangoli patterns, and warm ambient string lights." data-image="assets/images/service-diwali.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-diwali.png" alt="Diwali Light Festival Setup" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h3>Diwali Festival Setup</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD</p>
+                </div>
+            </div>
+
+            <!-- Item 12: Special Puja Mandap -->
+            <div class="portfolio-card" data-category="traditional" data-title="Spiritual Puja Altar" data-location="Frederick, MD" data-desc="Serene and peaceful traditional altar with yellow marigolds, brass kalash items, and sacred drapery." data-image="assets/images/service-pujas.png">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/images/service-pujas.png" alt="Spiritual Puja Altar" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-card-info">
+                    <span class="portfolio-tag">Traditional</span>
+                    <h3>Spiritual Puja Altar</h3>
+                    <p class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Frederick, MD</p>
                 </div>
             </div>
         </div>
-
     </section>
+
+    <!-- Full-Screen Modal Lightbox -->
+    <div id="portfolioLightbox" class="portfolio-lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Close Lightbox"><i class="fas fa-times"></i></button>
+            <button class="lightbox-nav lightbox-prev" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-nav lightbox-next" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-body">
+                <div class="lightbox-img-container">
+                    <img id="lightboxImage" src="" alt="Portfolio Image">
+                </div>
+                <div class="lightbox-details">
+                    <span id="lightboxTag" class="portfolio-tag">Category</span>
+                    <h2 id="lightboxTitle">Project Title</h2>
+                    <p id="lightboxLocation" class="portfolio-loc"><i class="fas fa-map-marker-alt text-gold"></i> Location</p>
+                    <p id="lightboxDesc">Description</p>
+                    <a href="contact.html" id="lightboxBookBtn" class="btn btn-primary">Book Similar Setup</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Call to Action -->
     <section class="cta">
@@ -156,10 +346,10 @@
             <div class="footer-links">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="portfolio.html">Weddings</a></li>
-                    <li><a href="portfolio.html">Birthdays</a></li>
-                    <li><a href="portfolio.html">Baby Showers</a></li>
-                    <li><a href="portfolio.html">Traditional Ceremonies</a></li>
+                    <li><a href="contact.html?service=weddings">Weddings</a></li>
+                    <li><a href="contact.html?service=birthdays">Birthdays</a></li>
+                    <li><a href="contact.html?service=babyshower">Baby Showers</a></li>
+                    <li><a href="contact.html?service=pasni">Traditional Ceremonies</a></li>
                 </ul>
             </div>
 
@@ -182,7 +372,7 @@
 
     <!-- Scripts -->
     <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=1.1.4"></script>
+    <script src="assets/js/script.js?v=1.2.0"></script>
 </body>
 
 </html>
