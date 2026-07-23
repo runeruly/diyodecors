@@ -1142,16 +1142,40 @@ footer {
         bottom: 18px; 
     }
 
-    /* Footer & Grid Responsiveness */
-    .footer-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
-    
-    .contact-info, .contact-form {
-        padding: 20px;
+    /* Contact Page Mobile Responsiveness: Form First, Streamlined Info Second */
+    .contact-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
+    .contact-form {
+        order: 1; /* Event Inquiry Form comes FIRST on mobile */
+        padding: 25px 20px;
+    }
+    .contact-info {
+        order: 2; /* Get in Touch info comes SECOND on mobile */
+        padding: 25px 20px;
+    }
+    .contact-info h2, .contact-form h2 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+    .contact-info p {
+        margin-bottom: 22px !important;
+        font-size: 0.95rem;
+    }
+    .info-item {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .info-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+    .expectations-box {
+        margin-top: 20px !important;
+        padding: 16px !important;
     }
 
     /* Portfolio Mobile Responsiveness */
