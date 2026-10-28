@@ -53,10 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (mobileBtn && nav) {
         mobileBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            const isActive = nav.classList.toggle('active');
+            mobileBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             const icon = mobileBtn.querySelector('i');
             if (icon) {
-                if (nav.classList.contains('active')) {
+                if (isActive) {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-times');
                 } else {
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         if (nav && nav.classList.contains('active') && mobileBtn && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
             nav.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
             const icon = mobileBtn.querySelector('i');
             if (icon) {
                 icon.classList.remove('fa-times');
@@ -96,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nav && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 if (mobileBtn) {
+                    mobileBtn.setAttribute('aria-expanded', 'false');
                     const icon = mobileBtn.querySelector('i');
                     if (icon) {
                         icon.classList.remove('fa-times');
@@ -234,15 +237,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Enhanced Hero Image Slider with Manual Dots & Prev/Next Arrows
+    // Enhanced Hero Image Slider with Manual Dots, Prev/Next Arrows, Live Counter & Touch Swipe
+    const heroSection = document.querySelector('.hero');
     const heroSlides = document.querySelectorAll('.hero-slide');
     const heroPrev = document.querySelector('.hero-prev');
     const heroNext = document.querySelector('.hero-next');
     const heroDots = document.querySelectorAll('.hero-dot');
+    const heroCounter = document.querySelector('.hero-slide-counter');
     
     if (heroSlides.length > 0) {
         let currentHeroSlide = 0;
         let heroInterval;
+        const totalSlidesStr = String(heroSlides.length).padStart(2, '0');
 
         const setHeroSlide = (index) => {
             heroSlides.forEach(s => s.classList.remove('active'));
@@ -253,6 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSlides[currentHeroSlide].classList.add('active');
             if (heroDots[currentHeroSlide]) {
                 heroDots[currentHeroSlide].classList.add('active');
+            }
+            if (heroCounter) {
+                const currentStr = String(currentHeroSlide + 1).padStart(2, '0');
+                heroCounter.textContent = `${currentStr} / ${totalSlidesStr}`;
             }
         };
 
@@ -286,6 +296,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetHeroTimer();
             });
         });
+
+        // Mobile Touch Swipe Support for Hero Slider
+        if (heroSection) {
+            let touchStartX = 0;
+            let touchStartY = 0;
+            heroSection.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                }
+            }, { passive: true });
+
+            heroSection.addEventListener('touchend', (e) => {
+                if (e.changedTouches.length === 1) {
+                    const deltaX = e.changedTouches[0].clientX - touchStartX;
+                    const deltaY = e.changedTouches[0].clientY - touchStartY;
+                    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                        if (deltaX < 0) {
+                            setHeroSlide(currentHeroSlide + 1);
+                        } else {
+                            setHeroSlide(currentHeroSlide - 1);
+                        }
+                        resetHeroTimer();
+                    }
+                }
+            }, { passive: true });
+        }
 
         startHeroTimer();
     }
@@ -422,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 2. Observe Grid Cards with staggered transition-delays
-        const staggeredContainers = document.querySelectorAll('.services-grid, .founders-grid, .portfolio-grid');
+        const staggeredContainers = document.querySelectorAll('.services-grid, .founders-grid, .portfolio-grid, .how-steps, .prestige-pillars, .featured-portfolio-grid, .included-grid');
         staggeredContainers.forEach(container => {
             const items = container.children;
             Array.from(items).forEach((item, index) => {
@@ -490,9 +527,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxOverlay = lightbox.querySelector('.lightbox-overlay');
         const lightboxPrev = lightbox.querySelector('.lightbox-prev');
         const lightboxNext = lightbox.querySelector('.lightbox-next');
+        const lightboxBookBtn = document.getElementById('lightboxBookBtn');
 
         let currentLightboxIndex = 0;
         let visibleCards = [];
+
+        const serviceParamMap = {
+            'traditional': 'pasni',
+            'graduations': 'graduations',
+            'weddings': 'weddings',
+            'birthdays': 'birthdays'
+        };
 
         const updateVisibleCards = () => {
             visibleCards = Array.from(portfolioCards).filter(card => card.style.display !== 'none');
@@ -511,13 +556,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lightboxLocation) lightboxLocation.innerHTML = `<i class="fas fa-map-marker-alt text-gold"></i> ${targetCard.getAttribute('data-location') || ''}`;
             if (lightboxDesc) lightboxDesc.textContent = targetCard.getAttribute('data-desc') || '';
 
+            const category = targetCard.getAttribute('data-category') || '';
+            const serviceParam = serviceParamMap[category];
+            if (lightboxBookBtn) {
+                lightboxBookBtn.href = serviceParam ? `contact.html?service=${serviceParam}` : 'contact.html';
+            }
+
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+            if (lightboxClose) lightboxClose.focus();
         };
 
         const closeLightbox = () => {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            if (document.activeElement && lightbox.contains(document.activeElement)) {
+                const lastCard = visibleCards[currentLightboxIndex];
+                if (lastCard) lastCard.focus();
+            }
         };
 
         portfolioCards.forEach((card) => {
@@ -525,6 +581,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateVisibleCards();
                 const indexInVisible = visibleCards.indexOf(card);
                 openLightbox(indexInVisible >= 0 ? indexInVisible : 0);
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
             });
         });
 
@@ -638,20 +701,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // Services Carousel Controller (Arrows & Dots for Mobile/Tablet)
+    // Services Category Filters & Carousel Controller (Arrows & Dots for Mobile/Tablet)
     // ==========================================================================
     const servicesGrid = document.querySelector('.services-grid');
     const servicesPrevBtn = document.querySelector('.services-prev');
     const servicesNextBtn = document.querySelector('.services-next');
     const servicesDotsContainer = document.querySelector('.services-dots');
+    const serviceFilterBtns = document.querySelectorAll('.service-filter-btn');
 
     if (servicesGrid) {
-        const cards = Array.from(servicesGrid.querySelectorAll('.service-card'));
-        
-        // Generate pagination dots
-        if (servicesDotsContainer && cards.length > 0) {
+        const allServiceCards = Array.from(servicesGrid.querySelectorAll('.service-card'));
+        const getVisibleServiceCards = () => allServiceCards.filter(card => !card.classList.contains('is-filtered-out'));
+
+        // Generate pagination dots for visible cards
+        const renderServiceDots = () => {
+            if (!servicesDotsContainer) return;
+            const visibleCards = getVisibleServiceCards();
             servicesDotsContainer.innerHTML = '';
-            cards.forEach((_, idx) => {
+            visibleCards.forEach((card, idx) => {
                 const dot = document.createElement('span');
                 dot.classList.add('services-dot');
                 if (idx === 0) dot.classList.add('active');
@@ -660,17 +727,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 servicesDotsContainer.appendChild(dot);
 
                 dot.addEventListener('click', () => {
-                    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        };
+
+        renderServiceDots();
+
+        // Category Filter Pill Clicks
+        if (serviceFilterBtns.length > 0) {
+            serviceFilterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    serviceFilterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+
+                    const selectedCategory = btn.getAttribute('data-service-filter');
+
+                    allServiceCards.forEach(card => {
+                        const cardCat = card.getAttribute('data-service-category');
+                        if (selectedCategory === 'all' || cardCat === selectedCategory) {
+                            card.classList.remove('is-filtered-out');
+                            card.classList.add('revealed');
+                        } else {
+                            card.classList.add('is-filtered-out');
+                        }
+                    });
+
+                    servicesGrid.scrollTo({ left: 0, behavior: 'smooth' });
+                    renderServiceDots();
                 });
             });
         }
 
         // Arrow navigation
         const getScrollStep = () => {
-            if (cards.length > 0) {
-                const style = window.getComputedStyle(cards[0]);
+            const visibleCards = getVisibleServiceCards();
+            if (visibleCards.length > 0) {
+                const style = window.getComputedStyle(visibleCards[0]);
                 const margin = parseFloat(style.marginRight) || 16;
-                return cards[0].offsetWidth + margin;
+                return visibleCards[0].offsetWidth + margin;
             }
             return 300;
         };
@@ -692,7 +791,8 @@ document.addEventListener('DOMContentLoaded', () => {
         servicesGrid.addEventListener('scroll', () => {
             if (!isTicking) {
                 window.requestAnimationFrame(() => {
-                    if (servicesDotsContainer && cards.length > 0) {
+                    const visibleCards = getVisibleServiceCards();
+                    if (servicesDotsContainer && visibleCards.length > 0) {
                         const dots = servicesDotsContainer.querySelectorAll('.services-dot');
                         const gridRect = servicesGrid.getBoundingClientRect();
                         const gridCenter = gridRect.left + gridRect.width / 2;
@@ -700,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         let closestIndex = 0;
                         let minDistance = Infinity;
 
-                        cards.forEach((card, idx) => {
+                        visibleCards.forEach((card, idx) => {
                             const cardRect = card.getBoundingClientRect();
                             const cardCenter = cardRect.left + cardRect.width / 2;
                             const distance = Math.abs(cardCenter - gridCenter);
