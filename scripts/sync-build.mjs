@@ -21,4 +21,14 @@ for (const file of files) {
   }
 }
 
-console.log(`Synced ${count} compiled HTML pages from dist/ to project root.`);
+// CRITICAL SAFEGUARD: Ensure .nojekyll always exists in the root directory.
+// GitHub Pages runs Ruby Jekyll by default when deploying from the root branch.
+// Without .nojekyll, Jekyll attempts to parse the `---` frontmatter in `src/**/*.astro`
+// files as YAML and fails the "pages build and deployment" GitHub Actions run.
+const nojekyllPath = path.join(rootDir, '.nojekyll');
+if (!fs.existsSync(nojekyllPath)) {
+  fs.writeFileSync(nojekyllPath, '');
+  console.log('Recreated missing .nojekyll safeguard file in project root.');
+}
+
+console.log(`Synced ${count} compiled HTML pages from dist/ to project root (.nojekyll verified).`);
