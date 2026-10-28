@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DiyoDecors script.js loaded - v1.1.4');
+    console.log('DiyoDecors script.js loaded - v2.1.0');
+    // Clean URL Bar: Strip .html extension if visited via a direct .html URL
+    if (window.location.pathname.endsWith('.html') && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+        const cleanPath = window.location.pathname
+            .replace(/\/index\.html$/, '/')
+            .replace(/\.html$/, '');
+        window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    }
     // Initialize Lenis Smooth Scroll
     let lenis;
     if (typeof Lenis !== 'undefined') {
@@ -486,6 +493,13 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transitionDelay = `${index * 0.08}s`;
             revealObserver.observe(el);
         });
+
+        // 5. Observe Showcase & Gallery Photos (Curtain Clip-Path Reveal)
+        document.querySelectorAll('.service-detail-image, .service-gallery-item, .featured-work-card:not(.hotspot-card)').forEach((el, index) => {
+            el.classList.add('curtain-reveal');
+            el.style.transitionDelay = `${(index % 2) * 0.12}s`;
+            revealObserver.observe(el);
+        });
     }
 
     // Filterable Portfolio Grid & Category Tabs
@@ -559,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = targetCard.getAttribute('data-category') || '';
             const serviceParam = serviceParamMap[category];
             if (lightboxBookBtn) {
-                lightboxBookBtn.href = serviceParam ? `contact.html?service=${serviceParam}` : 'contact.html';
+                lightboxBookBtn.href = serviceParam ? `contact?service=${serviceParam}` : 'contact';
             }
 
             lightbox.classList.add('active');
@@ -860,10 +874,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // Candlelit Card Spotlight Effect (Desktop Mouse Glow)
+    // Candlelit Card Spotlight, 3D Card Tilt & Magnetic Buttons (Desktop)
     // ==========================================================================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
     const spotlightCards = document.querySelectorAll('.spotlight-card');
-    if (spotlightCards.length > 0 && window.matchMedia('(pointer: fine)').matches) {
+    if (spotlightCards.length > 0 && isFinePointer) {
         spotlightCards.forEach((card) => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -874,6 +891,104 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
         });
     }
+
+    // 3D Perspective Tilt on Service & Portfolio Cards
+    if (isFinePointer && !prefersReducedMotion) {
+        const tiltCards = document.querySelectorAll('.service-card, .portfolio-card');
+        tiltCards.forEach((card) => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const rotateX = ((e.clientY - centerY) / (rect.height / 2)) * -4.5;
+                const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 4.5;
+                card.style.transform = `perspective(900px) translateY(-8px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+            }, { passive: true });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Subtle Magnetic Pull on Hero & Primary CTA Buttons
+        const magneticBtns = document.querySelectorAll('.hero-btns .btn, .cta .btn, .nav-cta');
+        magneticBtns.forEach((btn) => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const deltaX = (e.clientX - (rect.left + rect.width / 2)) * 0.22;
+                const deltaY = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
+                btn.style.transform = `translate3d(${deltaX.toFixed(1)}px, ${deltaY.toFixed(1)}px, 0)`;
+            }, { passive: true });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    }
+
+    // ==========================================================================
+    // Top Golden Scroll Progress Thread, Parallax & Marquee Velocity Boost
+    // ==========================================================================
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    const parallaxContainers = document.querySelectorAll('.curtain-reveal');
+    const marqueeTracks = document.querySelectorAll('.marquee-track');
+    let lastScrollY = window.scrollY;
+    let marqueeResetTimer;
+
+    const handleVisualScroll = (scrollY) => {
+        // 1. Update Top Gold Scroll Progress Bar
+        if (progressBar) {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = maxScroll > 0 ? Math.min(Math.max(scrollY / maxScroll, 0), 1) : 0;
+            progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
+        }
+
+        if (prefersReducedMotion) return;
+
+        // 2. Subtle Vertical Parallax on Curtain-Reveal Images
+        if (parallaxContainers.length > 0) {
+            const viewportHalf = window.innerHeight / 2;
+            parallaxContainers.forEach((container) => {
+                const rect = container.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const centerOffset = (rect.top + rect.height / 2 - viewportHalf) / viewportHalf;
+                    const shiftY = (centerOffset * -12).toFixed(1);
+                    container.style.setProperty('--parallax-y', `${shiftY}px`);
+                }
+            });
+        }
+
+        // 3. Marquee Scroll-Velocity Boost
+        if (marqueeTracks.length > 0 && typeof Element.prototype.getAnimations === 'function') {
+            const delta = Math.abs(scrollY - lastScrollY);
+            lastScrollY = scrollY;
+            const boost = Math.min(1 + delta * 0.08, 3.2);
+            marqueeTracks.forEach((track) => {
+                track.getAnimations().forEach((anim) => {
+                    anim.playbackRate = boost;
+                });
+            });
+            clearTimeout(marqueeResetTimer);
+            marqueeResetTimer = setTimeout(() => {
+                marqueeTracks.forEach((track) => {
+                    track.getAnimations().forEach((anim) => {
+                        anim.playbackRate = 1;
+                    });
+                });
+            }, 150);
+        }
+    };
+
+    if (lenis) {
+        lenis.on('scroll', (e) => {
+            handleVisualScroll(e.scroll);
+        });
+    } else {
+        window.addEventListener('scroll', () => {
+            handleVisualScroll(window.scrollY);
+        }, { passive: true });
+    }
+    handleVisualScroll(window.scrollY);
 });
 
 function createDiyoParticle(container) {

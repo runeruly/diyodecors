@@ -1,0 +1,30 @@
+---
+const items = [
+  'Weddings & Royal Mandaps',
+  'Sacred Pasni Ceremonies',
+  'Bartabanda & Gunyo Cholo',
+  'Luxury Milestone Birthdays',
+  'Bespoke Graduation Arches',
+  'Baby Showers & Gender Reveals',
+  'Diwali & Special Pujas',
+  'Serving Washington DC • Maryland • Virginia'
+];
+---
+<div class="luxury-marquee" aria-label="DiyoDecors signature specialties">
+    <div class="marquee-track">
+        {items.map((item) => (
+            <span class="marquee-item">
+                <span class="marquee-star" aria-hidden="true">&#10022;</span>
+                <span>{item}</span>
+            </span>
+        ))}
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+        {items.map((item) => (
+            <span class="marquee-item">
+                <span class="marquee-star" aria-hidden="true">&#10022;</span>
+                <span>{item}</span>
+            </span>
+        ))}
+    </div>
+</div>

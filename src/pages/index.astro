@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LuxuryMarquee from '../components/LuxuryMarquee.astro';
 import HotspotShowcase from '../components/HotspotShowcase.astro';
 import { services } from '../data/services.js';
 ---
@@ -41,10 +42,13 @@ import { services } from '../data/services.js';
                 sacred glow of the traditional Diyo, we bring light, elegance, and magic to every event.</p>
             <div class="hero-btns">
                 <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="contact.html" class="btn btn-outline">Book Consultation</a>
+                <a href="contact" class="btn btn-outline">Book Consultation</a>
             </div>
         </div>
     </section>
+
+    <!-- Infinite Luxury Editorial Marquee Ribbon -->
+    <LuxuryMarquee />
 
     <!-- Intro Teaser Section -->
     <section class="intro-teaser">
@@ -83,7 +87,7 @@ import { services } from '../data/services.js';
                 </div>
             </div>
 
-            <a href="about.html" class="btn btn-outline">Discover Our Story</a>
+            <a href="about" class="btn btn-outline">Discover Our Story</a>
         </div>
     </section>
 
@@ -119,8 +123,8 @@ import { services } from '../data/services.js';
                             <h3>{svc.cardTitle}</h3>
                             <p>{svc.cardDesc}</p>
                             <div class="service-actions">
-                                <a href={`${svc.slug}.html`} class="service-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></a>
-                                <a href={`contact.html?service=${svc.slug}`} class="service-inquire-btn">Inquire</a>
+                                <a href={svc.slug} class="service-link">Explore Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                                <a href={`contact?service=${svc.slug}`} class="service-inquire-btn">Inquire</a>
                             </div>
                         </div>
                     </div>
@@ -175,6 +179,6 @@ import { services } from '../data/services.js';
         <h2>Ready to light up your <span class="text-gold editorial-italic">event?</span></h2>
         <p>Let us bring your vision to life with our premium decoration services. Contact us today for a personalized
             consultation.</p>
-        <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+        <a href="contact" class="btn btn-primary">Contact Us Now</a>
     </section>
 </BaseLayout>

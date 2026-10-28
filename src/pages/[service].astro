@@ -51,7 +51,7 @@ const faqSchema = {
                     <h2>{service.h1Prefix} <span class="text-gold editorial-italic">at DiyoDecors</span></h2>
                 </div>
                 <p>{service.detailIntro}</p>
-                <a href={`contact.html?service=${service.slug}`} class="btn btn-primary">Get a Free Quote</a>
+                <a href={`contact?service=${service.slug}`} class="btn btn-primary">Get a Free Quote</a>
             </div>
         </div>
 
@@ -77,7 +77,7 @@ const faqSchema = {
                     <img src={service.gallery[1]} alt={`Premium ${service.h1Prefix} decoration detail`} loading="lazy" width="1024" height="1024">
                 </div>
             </div>
-            <a href="portfolio.html" class="btn btn-outline">View Our Portfolio</a>
+            <a href="portfolio" class="btn btn-outline">View Our Portfolio</a>
         </div>
     </section>
 
@@ -103,6 +103,6 @@ const faqSchema = {
         <h2>Ready to light up your <span class="text-gold editorial-italic">event?</span></h2>
         <p>Let us bring your vision to life with our premium decoration services. Contact us today for a personalized
             consultation.</p>
-        <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+        <a href="contact" class="btn btn-primary">Contact Us Now</a>
     </section>
 </BaseLayout>

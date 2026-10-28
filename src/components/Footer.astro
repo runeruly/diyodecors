@@ -1,6 +1,6 @@
 ---
 const { isHome = false } = Astro.props;
-const servicesHref = isHome ? '#services' : 'index.html#services';
+const servicesHref = isHome ? '#services' : '/#services';
 ---
 <footer>
     <div class="footer-grid">
@@ -21,21 +21,21 @@ const servicesHref = isHome ? '#services' : 'index.html#services';
         <div class="footer-links">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="about">About Us</a></li>
                 <li><a href={servicesHref}>Our Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="portfolio">Portfolio</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </div>
 
         <div class="footer-links">
             <h4>Services</h4>
             <ul>
-                <li><a href="weddings.html">Weddings</a></li>
-                <li><a href="birthdays.html">Birthdays</a></li>
-                <li><a href="babyshower.html">Baby Showers</a></li>
-                <li><a href="pasni.html">Traditional Ceremonies</a></li>
+                <li><a href="weddings">Weddings</a></li>
+                <li><a href="birthdays">Birthdays</a></li>
+                <li><a href="babyshower">Baby Showers</a></li>
+                <li><a href="pasni">Traditional Ceremonies</a></li>
             </ul>
         </div>
 

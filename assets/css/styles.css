@@ -3319,4 +3319,259 @@ a, button, .service-card, .portfolio-card, .filter-btn, summary, .hotspot-pin, .
     }
 }
 
+/* ==========================================================================
+   V2.1 Awwwards-Level Sleek Luxury Animations (Desktop & Mobile 60fps)
+   ========================================================================== */
+
+/* 1. Top Golden Scroll Progress Thread */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background: linear-gradient(90deg, #b38b22 0%, #e2b740 45%, #fff5c0 75%, #ff7b00 100%);
+    box-shadow: 0 0 12px rgba(226, 183, 64, 0.75);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    z-index: 2500;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* 2. 24K Liquid Gold Foil Shimmer on Headings */
+.hero h1 .text-gold,
+.page-header h1 .text-gold,
+.section-header h2 .text-gold,
+.cta h2 .text-gold {
+    background: linear-gradient(
+        110deg,
+        #cfa12c 0%,
+        #e2b740 25%,
+        #fff7d6 48%,
+        #f59e0b 65%,
+        #e2b740 85%,
+        #cfa12c 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: liquidGoldShimmer 6.5s linear infinite;
+    display: inline-block;
+}
+
+/* High-contrast Burnished Gold Shimmer for Light Sand Sections */
+.intro-teaser .section-header h2 .text-gold,
+.about .section-header h2 .text-gold,
+.service-faq-section .section-header h2 .text-gold {
+    background: linear-gradient(
+        110deg,
+        #7a590f 0%,
+        #b38b22 28%,
+        #d4a017 50%,
+        #8c6712 72%,
+        #b38b22 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: liquidGoldShimmer 6.5s linear infinite;
+}
+
+@keyframes liquidGoldShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 220% center; }
+}
+
+/* 3. Animated Hero Slide Progress Fill Bar */
+.hero-dot {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-dot.active {
+    background: rgba(226, 183, 64, 0.25);
+    width: 34px;
+    border-color: rgba(226, 183, 64, 0.65);
+    box-shadow: 0 0 12px rgba(226, 183, 64, 0.35);
+}
+
+.hero-dot.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--primary-gold), #fff3b0);
+    border-radius: inherit;
+    transform-origin: left center;
+    animation: heroProgressFill 5s linear forwards;
+}
+
+@keyframes heroProgressFill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* 4. Infinite Luxury Editorial Marquee Ribbon */
+.luxury-marquee {
+    background: #070403;
+    border-top: 1px solid rgba(226, 183, 64, 0.22);
+    border-bottom: 1px solid rgba(226, 183, 64, 0.22);
+    padding: 15px 0;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    z-index: 3;
+    user-select: none;
+}
+
+.luxury-marquee::before,
+.luxury-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.luxury-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, #070403 0%, transparent 100%);
+}
+
+.luxury-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, #070403 0%, transparent 100%);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 100%;
+    animation: marqueeGlide 34s linear infinite;
+    will-change: transform;
+}
+
+.luxury-marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding-right: 36px;
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #e8dfd5;
+    white-space: nowrap;
+}
+
+.marquee-star {
+    color: var(--primary-gold);
+    font-size: 0.9rem;
+    text-shadow: 0 0 10px rgba(226, 183, 64, 0.6);
+}
+
+@keyframes marqueeGlide {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .luxury-marquee {
+        padding: 12px 0;
+    }
+    .marquee-item {
+        font-size: 0.74rem;
+        letter-spacing: 1.6px;
+        gap: 14px;
+        padding-right: 28px;
+    }
+    .luxury-marquee::before,
+    .luxury-marquee::after {
+        width: 35px;
+    }
+}
+
+/* 5. Cinematic Curtain Clip-Path Reveal & Parallax Depth */
+.curtain-reveal {
+    clip-path: inset(10% 4% 10% 4% round 20px);
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        clip-path 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.85s ease,
+        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path, transform, opacity;
+}
+
+.curtain-reveal.revealed {
+    clip-path: inset(0% 0% 0% 0% round 20px) !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.curtain-reveal img {
+    transform: scale(1.12) translateY(var(--parallax-y, 0px));
+    transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.curtain-reveal.revealed img {
+    transform: scale(1.03) translateY(var(--parallax-y, 0px));
+}
+
+.curtain-reveal:hover img {
+    transform: scale(1.08) translateY(var(--parallax-y, 0px));
+}
+
+/* 6. Self-Drawing Golden Underline & Light-Sweep Magnetic Buttons */
+.section-header.reveal-up h2::after {
+    width: 0;
+    opacity: 0;
+    transition: width 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, opacity 0.6s ease 0.2s;
+}
+
+.section-header.reveal-up.revealed h2::after {
+    width: 72px;
+    opacity: 1;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.48) 50%,
+        transparent 100%
+    );
+    transform: rotate(25deg);
+    animation: buttonLightSweep 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes buttonLightSweep {
+    0%, 72% { left: -65%; opacity: 0; }
+    78% { opacity: 1; }
+    100% { left: 135%; opacity: 0; }
+}
+
+.btn:active,
+.service-inquire-btn:active,
+.nav-cta:active {
+    transform: scale(0.97) !important;
+}
+
 

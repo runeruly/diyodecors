@@ -14,7 +14,8 @@ const {
   extraSchema = null
 } = Astro.props;
 
-const canonicalUrl = canonicalPath ? `https://diyodecors.com/${canonicalPath}` : 'https://diyodecors.com/';
+const cleanCanonicalPath = canonicalPath.replace(/\.html$/, '');
+const canonicalUrl = cleanCanonicalPath ? `https://diyodecors.com/${cleanCanonicalPath}` : 'https://diyodecors.com/';
 const isHome = activePage === 'home';
 
 const localBusinessSchema = extraSchema || {
@@ -104,10 +105,11 @@ const localBusinessSchema = extraSchema || {
     )}
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.0.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
 </head>
 <body>
 
+    <div class="scroll-progress-bar" aria-hidden="true"></div>
     <a class="skip-link" href={isHome ? '#home' : '#main-content'}>Skip to main content</a>
 
     <Header activePage={activePage} />
@@ -118,7 +120,7 @@ const localBusinessSchema = extraSchema || {
 
     <!-- Scripts -->
     <script is:inline src="assets/js/lenis.min.js"></script>
-    <script is:inline src="assets/js/script.js?v=2.0.0"></script>
+    <script is:inline src="assets/js/script.js?v=2.1.0"></script>
 </body>
 
 </html>
