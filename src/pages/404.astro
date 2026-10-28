@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://api.web3forms.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Page not found. Return to DiyoDecors, premium event decoration services in DC, MD, and VA.">
+    <title>Page Not Found | DiyoDecors</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+    <!-- Google Fonts (preconnected) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0806;
+            color: #f9f4ef;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(226, 183, 64, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 7rem;
+            font-weight: 700;
+            color: #e2b740;
+            text-shadow: 0 0 40px rgba(226, 183, 64, 0.4);
+            line-height: 1.1;
+        }
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            margin: 10px 0 20px;
+        }
+        p {
+            color: #c9baa8;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            background: linear-gradient(135deg, #e2b740 0%, #f59e0b 100%);
+            color: #0d0806;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin: 0 6px;
+        }
+        .btn.outline {
+            background: transparent;
+            color: #e2b740;
+            border: 1px solid #e2b740;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 5rem; }
+            .btn { display: block; margin: 10px auto; width: 80%; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow"></div>
+    <div class="container">
+        <h1>404</h1>
+        <h2>This page has gone out of the glow</h2>
+        <p>We couldn't find the page you're looking for. Let us help you light up your next event instead.</p>
+        <a href="index.html" class="btn">Back to Home</a>
+        <a href="contact.html" class="btn outline">Book a Consultation</a>
+    </div>
+</body>
+
+</html>

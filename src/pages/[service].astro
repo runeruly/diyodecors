@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { services } from '../data/services.js';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { service: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": service.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+};
+---
+<BaseLayout
+  title={service.pageTitle}
+  description={service.metaDescription}
+  ogTitle={service.pageTitle}
+  ogDescription={service.metaDescription}
+  canonicalPath={`${service.slug}.html`}
+  activePage="services"
+  faqSchema={faqSchema}
+>
+    <!-- Page Header -->
+    <div class="page-header" id="main-content">
+        <div class="floating-diyos"></div>
+        <h1>{service.h1Prefix} <span class="text-gold editorial-italic">Decoration</span></h1>
+    </div>
+
+    <!-- Service Detail -->
+    <section class="service-detail">
+        <div class="service-detail-wrap">
+            <div class="service-detail-image">
+                <img src={service.cardImage} alt={`${service.h1Prefix} Decoration by DiyoDecors`} loading="lazy" width="1024" height="1024">
+            </div>
+            <div class="service-detail-text">
+                <div class="section-header left">
+                    <span class="editorial-pretitle">Bespoke Event Styling</span>
+                    <h2>{service.h1Prefix} <span class="text-gold editorial-italic">at DiyoDecors</span></h2>
+                </div>
+                <p>{service.detailIntro}</p>
+                <a href={`contact.html?service=${service.slug}`} class="btn btn-primary">Get a Free Quote</a>
+            </div>
+        </div>
+
+        <div class="service-included">
+            <h2>What's <span class="text-gold editorial-italic">Included</span></h2>
+            <div class="included-grid">
+                {service.included.map((item) => (
+                    <div class="included-item spotlight-card">
+                        <i class="fas fa-check"></i>
+                        <span>{item}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="service-detail-gallery">
+            <h2>Why Choose <span class="text-gold editorial-italic">DiyoDecors</span></h2>
+            <div class="service-gallery-grid">
+                <div class="service-gallery-item">
+                    <img src={service.gallery[0]} alt={`${service.h1Prefix} setup in DC, MD & VA`} loading="lazy" width="1024" height="1024">
+                </div>
+                <div class="service-gallery-item">
+                    <img src={service.gallery[1]} alt={`Premium ${service.h1Prefix} decoration detail`} loading="lazy" width="1024" height="1024">
+                </div>
+            </div>
+            <a href="portfolio.html" class="btn btn-outline">View Our Portfolio</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="service-faq-section">
+        <div class="section-header">
+            <span class="editorial-pretitle dark-pretitle">Common Inquiries</span>
+            <h2>Frequently Asked <span class="text-gold editorial-italic">Questions</span></h2>
+            <p>{service.faqSubtitle}</p>
+        </div>
+        <div class="service-faq-list">
+            {service.faqs.map((faq, idx) => (
+                <details class="service-faq" open={idx === 0}>
+                    <summary>{faq.q}</summary>
+                    <p>{faq.a}</p>
+                </details>
+            ))}
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to light up your <span class="text-gold editorial-italic">event?</span></h2>
+        <p>Let us bring your vision to life with our premium decoration services. Contact us today for a personalized
+            consultation.</p>
+        <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+    </section>
+</BaseLayout>

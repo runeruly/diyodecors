@@ -1,0 +1,111 @@
+---
+const hotspots = [
+  {
+    num: '01',
+    title: 'Auspicious Custom Signage',
+    desc: 'Hand-styled Nepali & English ceremonial medallions ("Shubha Anna Prashan") framed by lush crimson florals.',
+    top: '24%',
+    left: '53%'
+  },
+  {
+    num: '02',
+    title: '24K Gold Sequin & Velvet Drapery',
+    desc: 'Shimmering gold sequin center curtain flanked by pleated crimson and ivory silk drapes for royal depth.',
+    top: '38%',
+    left: '73%'
+  },
+  {
+    num: '03',
+    title: 'Sacred Brass & Thali Altar',
+    desc: 'Dedicated ceremonial side table dressed in deep red velvet for traditional brass vessels, diyas, and offerings.',
+    top: '58%',
+    left: '16%'
+  },
+  {
+    num: '04',
+    title: 'Royal Scalloped Shell Seating',
+    desc: 'Plush white velvet shell loveseat accented with a crimson silk throw—designed for timeless family portraits.',
+    top: '62%',
+    left: '45%'
+  }
+];
+---
+<section class="featured-portfolio" id="featured-work">
+    <div class="section-header">
+        <span class="editorial-pretitle">Artisanal Craftsmanship</span>
+        <h2>Signature <span class="text-gold editorial-italic">Creations</span></h2>
+        <p>Tap the numbered golden pins on our Pasni stage below to inspect the finer details of a bespoke DiyoDecors installation.</p>
+    </div>
+
+    <div class="featured-portfolio-grid">
+        <!-- Interactive Hotspot Stage Card -->
+        <div class="featured-work-card featured-work-large hotspot-card">
+            <div class="hotspot-stage-media">
+                <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Ceremony Stage in Germantown, MD" loading="lazy">
+                
+                <!-- Interactive Pins on Stage Photo -->
+                <div class="hotspot-pins-layer" aria-label="Stage detail hotspots">
+                    {hotspots.map((spot, idx) => (
+                        <button
+                            type="button"
+                            class={`hotspot-pin${idx === 0 ? ' active' : ''}`}
+                            style={`top: ${spot.top}; left: ${spot.left};`}
+                            data-hotspot-index={idx}
+                            aria-label={`Inspect detail ${spot.num}: ${spot.title}`}
+                        >
+                            <span>{idx + 1}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Interactive Detail Bar Below Stage Photo -->
+            <div class="hotspot-detail-bar">
+                <div class="hotspot-selector-pills" role="tablist" aria-label="Select stage detail">
+                    {hotspots.map((spot, idx) => (
+                        <button
+                            type="button"
+                            class={`hotspot-pill-btn${idx === 0 ? ' active' : ''}`}
+                            data-hotspot-index={idx}
+                            role="tab"
+                            aria-selected={idx === 0 ? 'true' : 'false'}
+                        >
+                            {spot.num}
+                        </button>
+                    ))}
+                </div>
+                <div class="hotspot-detail-panels">
+                    {hotspots.map((spot, idx) => (
+                        <div class={`hotspot-detail-item${idx === 0 ? ' active' : ''}`} data-hotspot-panel={idx}>
+                            <span class="portfolio-tag">Detail {spot.num} &bull; Germantown, MD</span>
+                            <h3>{spot.title}</h3>
+                            <p>{spot.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <a href="portfolio.html" class="featured-work-card spotlight-card">
+            <img src="assets/images/hero-wedding.webp" width="1024" height="1024" alt="Luxury Wedding Mandap in Bethesda, MD" loading="lazy">
+            <div class="featured-work-overlay">
+                <span class="portfolio-tag">Weddings</span>
+                <h3>Grand Floral Wedding Mandap</h3>
+                <p><i class="fas fa-map-marker-alt text-gold"></i> Bethesda, MD</p>
+            </div>
+        </a>
+
+        <a href="portfolio.html" class="featured-work-card spotlight-card">
+            <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Custom Graduation Arch in Rockville, MD" loading="lazy">
+            <div class="featured-work-overlay">
+                <span class="portfolio-tag">Milestones</span>
+                <h3>Bespoke Graduation Arch &amp; Lounge</h3>
+                <p><i class="fas fa-map-marker-alt text-gold"></i> Rockville, MD</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="featured-portfolio-cta">
+        <a href="portfolio.html" class="btn btn-outline">Explore Full Portfolio <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </div>
+</section>

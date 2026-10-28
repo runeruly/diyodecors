@@ -698,6 +698,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 eventSelect.dispatchEvent(new Event('change'));
             }
         }
+
+        // Palette Studio URL Query Parameter Pre-selection (e.g. contact.html?service=pasni&palette=Royal+Crimson+%26+24K+Gold)
+        const paletteParam = urlParams.get('palette');
+        if (paletteParam) {
+            const paletteBanner = document.getElementById('selectedPaletteBanner');
+            const paletteNameEl = document.getElementById('selectedPaletteName');
+            const paletteHiddenInput = document.getElementById('selected_palette_input');
+            if (paletteBanner && paletteNameEl) {
+                paletteNameEl.textContent = paletteParam;
+                paletteBanner.style.display = 'flex';
+            }
+            if (paletteHiddenInput) {
+                paletteHiddenInput.value = paletteParam;
+            }
+            if (messageInput && !messageInput.value) {
+                messageInput.value = `Preferred Signature Palette: ${paletteParam}\n`;
+            }
+        }
     }
 
     // ==========================================================================
@@ -820,6 +838,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 isTicking = true;
             }
         }, { passive: true });
+    }
+
+    // ==========================================================================
+    // Interactive "Curate Your Palette" Mood Studio Controller
+    // ==========================================================================
+    const paletteTabBtns = document.querySelectorAll('.palette-tab-btn');
+    const palettePanels = document.querySelectorAll('.palette-panel');
+
+    if (paletteTabBtns.length > 0 && palettePanels.length > 0) {
+        paletteTabBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-palette-id');
+                paletteTabBtns.forEach((b) => {
+                    const isMatch = b === btn;
+                    b.classList.toggle('active', isMatch);
+                    b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+                });
+                palettePanels.forEach((panel) => {
+                    const isMatch = panel.getAttribute('data-palette-panel') === targetId;
+                    panel.classList.toggle('active', isMatch);
+                });
+            });
+        });
+    }
+
+    // ==========================================================================
+    // Interactive Stage Hotspot Showcase Controller
+    // ==========================================================================
+    const hotspotPins = document.querySelectorAll('.hotspot-pin');
+    const hotspotPills = document.querySelectorAll('.hotspot-pill-btn');
+    const hotspotPanels = document.querySelectorAll('.hotspot-detail-item');
+
+    if (hotspotPins.length > 0 && hotspotPanels.length > 0) {
+        const activateHotspot = (indexStr) => {
+            hotspotPins.forEach((pin) => {
+                pin.classList.toggle('active', pin.getAttribute('data-hotspot-index') === indexStr);
+            });
+            hotspotPills.forEach((pill) => {
+                const isMatch = pill.getAttribute('data-hotspot-index') === indexStr;
+                pill.classList.toggle('active', isMatch);
+                pill.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+            });
+            hotspotPanels.forEach((panel) => {
+                panel.classList.toggle('active', panel.getAttribute('data-hotspot-panel') === indexStr);
+            });
+        };
+
+        hotspotPins.forEach((pin) => {
+            pin.addEventListener('click', (e) => {
+                e.stopPropagation();
+                activateHotspot(pin.getAttribute('data-hotspot-index'));
+            });
+        });
+
+        hotspotPills.forEach((pill) => {
+            pill.addEventListener('click', (e) => {
+                e.stopPropagation();
+                activateHotspot(pill.getAttribute('data-hotspot-index'));
+            });
+        });
+    }
+
+    // ==========================================================================
+    // Candlelit Card Spotlight Effect (Desktop Mouse Glow)
+    // ==========================================================================
+    const spotlightCards = document.querySelectorAll('.spotlight-card');
+    if (spotlightCards.length > 0 && window.matchMedia('(pointer: fine)').matches) {
+        spotlightCards.forEach((card) => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            }, { passive: true });
+        });
     }
 });
 

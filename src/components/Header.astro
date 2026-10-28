@@ -1,0 +1,26 @@
+---
+const { activePage = '' } = Astro.props;
+const isHome = activePage === 'home';
+const homeHref = isHome ? '#home' : 'index.html';
+const servicesHref = isHome ? '#services' : 'index.html#services';
+---
+<header>
+    <a href={homeHref} class="logo">
+        <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo">
+        <span>DiyoDecors</span>
+    </a>
+
+    <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href={homeHref} class={activePage === 'home' ? 'active' : ''}>Home</a></li>
+            <li><a href="about.html" class={activePage === 'about' ? 'active' : ''}>About Us</a></li>
+            <li><a href={servicesHref} class={activePage === 'services' ? 'active' : ''}>Services</a></li>
+            <li><a href="portfolio.html" class={activePage === 'portfolio' ? 'active' : ''}>Portfolio</a></li>
+            <li><a href="contact.html" class={`nav-cta${activePage === 'contact' ? ' active' : ''}`}>Book Consultation</a></li>
+        </ul>
+    </nav>
+</header>

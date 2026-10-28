@@ -1,0 +1,63 @@
+---
+const { isHome = false } = Astro.props;
+const servicesHref = isHome ? '#services' : 'index.html#services';
+---
+<footer>
+    <div class="footer-grid">
+        <div class="footer-about">
+            <div class="logo">
+                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo" style="height: 60px;">
+                <span style="font-size: 1.8rem;">DiyoDecors</span>
+            </div>
+            <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We
+                make moments beautiful.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1BFWro3nC5/" target="_blank" rel="noopener noreferrer" aria-label="DiyoDecors on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/diyo_decors" target="_blank" rel="noopener noreferrer" aria-label="DiyoDecors on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@diyo.decors" target="_blank" rel="noopener noreferrer" aria-label="DiyoDecors on TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href={servicesHref}>Our Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="weddings.html">Weddings</a></li>
+                <li><a href="birthdays.html">Birthdays</a></li>
+                <li><a href="babyshower.html">Baby Showers</a></li>
+                <li><a href="pasni.html">Traditional Ceremonies</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>Contact Info</h4>
+            <ul>
+                <li><i class="fas fa-phone text-gold"></i> <a href="tel:+13012817165">+1 (301) 281-7165</a> (Umana)</li>
+                <li><i class="fas fa-phone text-gold"></i> <a href="tel:+12403967635">+1 (240) 396-7635</a> (Deepa)</li>
+                <li><i class="fas fa-envelope text-gold"></i> <a href="mailto:contact@diyodecors.com">contact@diyodecors.com</a></li>
+                <li><i class="fas fa-map-marker-alt text-gold"></i> Germantown, MD 20876</li>
+                <li><i class="fas fa-car text-gold"></i> Serving DC, MD, VA</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 DiyoDecors. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Mobile Quick-Contact Bar -->
+<div class="mobile-contact-bar">
+    <a href="tel:+13012817165" class="mc-bar-btn mc-call"><i class="fas fa-phone-alt"></i> Call Us</a>
+    <a href="https://wa.me/13012817165?text=Hi%20DiyoDecors%2C%20I%27m%20interested%20in%20your%20event%20decoration%20services." target="_blank" rel="noopener noreferrer" class="mc-bar-btn mc-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>

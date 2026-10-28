@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="About Us | DiyoDecors"
+  description="About DiyoDecors - Learn more about our story, the Diyo essence, and co-founders Umana and Deepa."
+  ogTitle="About Us | DiyoDecors - Premium Event Decoration Services"
+  ogDescription="Learn more about our story, the Diyo essence, and co-founders Umana and Deepa crafting luxury event decorations in DC, MD, and VA."
+  canonicalPath="about.html"
+  activePage="about"
+>
+    <!-- Page Header -->
+    <div class="page-header" id="main-content">
+        <div class="floating-diyos"></div>
+        <h1>About <span class="text-gold editorial-italic">Us</span></h1>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" style="padding-top: 60px;">
+        <div class="about-grid">
+            <div class="about-logo">
+                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Signature Logo">
+            </div>
+            <div class="about-text">
+                <div class="section-header left">
+                    <span class="editorial-pretitle dark-pretitle">Our Heritage &amp; Philosophy</span>
+                    <h2>The <span class="text-gold editorial-italic">Diyo</span> Essence</h2>
+                </div>
+                <h3>Lighting up your celebrations</h3>
+                <p>At DiyoDecors, we draw our inspiration from the traditional 'Diyo' — a sacred oil lamp that
+                    symbolizes purity, goodness, and the dispelling of darkness. Just as a Diyo brings a warm, golden
+                    glow to its surroundings, we aim to illuminate your special events with breathtaking designs and
+                    meticulous attention to detail.</p>
+                <p>With years of experience in creating luxurious, memorable spaces, founders Umana and Deepa specialize in transforming
+                    ordinary venues into magical settings. Whether it's the grandeur of a wedding or the intimate joy of
+                    a baby shower, we craft atmospheres that leave lasting impressions. We proudly serve the Washington
+                    DC, Maryland, and Virginia area.</p>
+            </div>
+        </div>
+
+        <!-- Founders Subsection -->
+        <div class="about-founders">
+            <div class="section-header">
+                <span class="editorial-pretitle dark-pretitle">Creative Leadership</span>
+                <h2>Meet the <span class="text-gold editorial-italic">Founders</span></h2>
+                <p>The creative visionaries crafting unforgettable luxury decorations</p>
+            </div>
+            <div class="founders-grid">
+                <!-- Founder 1: Umana -->
+                <div class="founder-card">
+                    <div class="founder-img-wrapper">
+                        <img src="assets/images/umana.webp" width="400" height="533" alt="Umana - Co-Founder" class="founder-img">
+                        <div class="founder-info-overlay">
+                            <div class="founder-socials">
+                                <a href="tel:+13012817165" class="social-icon" title="Call Umana" aria-label="Call Umana"><i class="fas fa-phone"></i></a>
+                                <a href="mailto:contact@diyodecors.com" class="social-icon" title="Email Umana" aria-label="Email Umana"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-details">
+                        <h3>Umana</h3>
+                        <span class="founder-role">Co-Founder &amp; Creative Director</span>
+                        <p class="founder-bio">Brings elegant styling, luxury color palettes, and a keen eye for fine details to craft breathtaking event atmospheres.</p>
+                    </div>
+                </div>
+
+                <!-- Founder 2: Deepa -->
+                <div class="founder-card">
+                    <div class="founder-img-wrapper">
+                        <img src="assets/images/deepa.webp" width="400" height="517" alt="Deepa - Co-Founder" class="founder-img">
+                        <div class="founder-info-overlay">
+                            <div class="founder-socials">
+                                <a href="tel:+12403967635" class="social-icon" title="Call Deepa" aria-label="Call Deepa"><i class="fas fa-phone"></i></a>
+                                <a href="mailto:contact@diyodecors.com" class="social-icon" title="Email Deepa" aria-label="Email Deepa"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-details">
+                        <h3>Deepa</h3>
+                        <span class="founder-role">Co-Founder &amp; Lead Designer</span>
+                        <p class="founder-bio">Specializes in structural execution, authentic cultural backdrops, and coordinating perfect arrangements for ceremonies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to light up your <span class="text-gold editorial-italic">event?</span></h2>
+        <p>Let us bring your vision to life with our premium decoration services. Contact us today for a personalized
+            consultation.</p>
+        <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+    </section>
+</BaseLayout>
