@@ -698,24 +698,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 eventSelect.dispatchEvent(new Event('change'));
             }
         }
-
-        // Palette Studio URL Query Parameter Pre-selection (e.g. contact.html?service=pasni&palette=Royal+Crimson+%26+24K+Gold)
-        const paletteParam = urlParams.get('palette');
-        if (paletteParam) {
-            const paletteBanner = document.getElementById('selectedPaletteBanner');
-            const paletteNameEl = document.getElementById('selectedPaletteName');
-            const paletteHiddenInput = document.getElementById('selected_palette_input');
-            if (paletteBanner && paletteNameEl) {
-                paletteNameEl.textContent = paletteParam;
-                paletteBanner.style.display = 'flex';
-            }
-            if (paletteHiddenInput) {
-                paletteHiddenInput.value = paletteParam;
-            }
-            if (messageInput && !messageInput.value) {
-                messageInput.value = `Preferred Signature Palette: ${paletteParam}\n`;
-            }
-        }
     }
 
     // ==========================================================================
@@ -838,29 +820,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 isTicking = true;
             }
         }, { passive: true });
-    }
-
-    // ==========================================================================
-    // Interactive "Curate Your Palette" Mood Studio Controller
-    // ==========================================================================
-    const paletteTabBtns = document.querySelectorAll('.palette-tab-btn');
-    const palettePanels = document.querySelectorAll('.palette-panel');
-
-    if (paletteTabBtns.length > 0 && palettePanels.length > 0) {
-        paletteTabBtns.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.getAttribute('data-palette-id');
-                paletteTabBtns.forEach((b) => {
-                    const isMatch = b === btn;
-                    b.classList.toggle('active', isMatch);
-                    b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-                });
-                palettePanels.forEach((panel) => {
-                    const isMatch = panel.getAttribute('data-palette-panel') === targetId;
-                    panel.classList.toggle('active', isMatch);
-                });
-            });
-        });
     }
 
     // ==========================================================================

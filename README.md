@@ -8,7 +8,6 @@ The website uses **Astro** (`src/`) to compile modular components and data into 
 
 - `src/layouts/BaseLayout.astro` — Master HTML shell, SEO/OpenGraph tags, strict `Content-Security-Policy`, JSON-LD structured data, and Google Fonts (`Cinzel`, `Cormorant Garamond`, `Montserrat`).
 - `src/components/Header.astro` & `src/components/Footer.astro` — Shared navigation header, mobile slide-out drawer, footer, and sticky mobile quick-contact bar.
-- `src/components/PaletteStudio.astro` — Interactive **Curate Your Signature Palette** mood studio.
 - `src/components/HotspotShowcase.astro` — Interactive **Anatomy of a Diyo Setup** stage hotspot showcase.
 - `src/data/services.js` & `src/pages/[service].astro` — Single source of truth generating all 12 service detail pages (`weddings.html`, `pasni.html`, `bartabanda.html`, `birthdays.html`, etc.).
 - `assets/css/styles.css` & `assets/js/script.js` — Global stylesheet and client-side interactions.
