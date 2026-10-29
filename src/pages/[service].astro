@@ -43,7 +43,7 @@ const faqSchema = {
     <section class="service-detail">
         <div class="service-detail-wrap">
             <div class="service-detail-image">
-                <img src={service.cardImage} alt={`${service.h1Prefix} Decoration by DiyoDecors`} loading="lazy" width="1024" height="1024">
+                <img src={service.cardImage} alt={`${service.h1Prefix} Decoration by DiyoDecors`} decoding="async" width={service.cardImageWidth} height={service.cardImageHeight}>
             </div>
             <div class="service-detail-text">
                 <div class="section-header left">
@@ -71,10 +71,10 @@ const faqSchema = {
             <h2>Why Choose <span class="text-gold editorial-italic">DiyoDecors</span></h2>
             <div class="service-gallery-grid">
                 <div class="service-gallery-item">
-                    <img src={service.gallery[0]} alt={`${service.h1Prefix} setup in DC, MD & VA`} loading="lazy" width="1024" height="1024">
+                    <img src={service.gallery[0]} alt={`${service.h1Prefix} setup in DC, MD & VA`} loading="lazy" decoding="async" width="800" height="800">
                 </div>
                 <div class="service-gallery-item">
-                    <img src={service.gallery[1]} alt={`Premium ${service.h1Prefix} decoration detail`} loading="lazy" width="1024" height="1024">
+                    <img src={service.gallery[1]} alt={`Premium ${service.h1Prefix} decoration detail`} loading="lazy" decoding="async" width="800" height="800">
                 </div>
             </div>
             <a href="portfolio" class="btn btn-outline">View Our Portfolio</a>

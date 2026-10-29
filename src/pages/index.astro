@@ -17,9 +17,9 @@ import { services } from '../data/services.js';
     <section class="hero" id="home" aria-label="DiyoDecors hero">
         <div class="hero-slider">
             <div class="hero-slide active" style="background-image: url('assets/images/hero/pasni_1_enhanced-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/hero-wedding-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/service-gunyo-cholo-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/service-diwali-wide.webp');"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/hero-wedding-wide.webp"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/service-gunyo-cholo-wide.webp"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/service-diwali-wide.webp"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="floating-diyos"></div>
@@ -114,7 +114,7 @@ import { services } from '../data/services.js';
                 {services.map((svc) => (
                     <div class="service-card spotlight-card" data-service-category={svc.category}>
                         <div class="service-img">
-                            <img src={svc.cardImage} width={svc.cardImageWidth} height={svc.cardImageHeight} alt={`${svc.cardTitle} Decoration`} loading="lazy">
+                            <img src={svc.cardImage} width={svc.cardImageWidth} height={svc.cardImageHeight} alt={`${svc.cardTitle} Decoration`} loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">

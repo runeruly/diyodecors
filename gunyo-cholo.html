@@ -87,18 +87,24 @@
   ]
 }</script>
 
-    <!-- Font Awesome with SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat -->
+    <!-- Preconnect to external font & icon CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.0">
+
+    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat (trimmed to used weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome with SRI (loaded non-blockingly via data-async-css) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" data-async-css>
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
 </head>
 <body>
 
@@ -107,7 +113,7 @@
 
     <header>
     <a href="/" class="logo">
-        <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo">
+        <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" decoding="async">
         <span>DiyoDecors</span>
     </a>
 
@@ -137,7 +143,7 @@
     <section class="service-detail">
         <div class="service-detail-wrap">
             <div class="service-detail-image">
-                <img src="assets/images/service-gunyo-cholo.webp" alt="Gunyo Cholo Decoration by DiyoDecors" loading="lazy" width="1024" height="1024">
+                <img src="assets/images/service-gunyo-cholo.webp" alt="Gunyo Cholo Decoration by DiyoDecors" decoding="async" width="800" height="800">
             </div>
             <div class="service-detail-text">
                 <div class="section-header left">
@@ -175,10 +181,10 @@
             <h2>Why Choose <span class="text-gold editorial-italic">DiyoDecors</span></h2>
             <div class="service-gallery-grid">
                 <div class="service-gallery-item">
-                    <img src="assets/images/service-birthday.webp" alt="Gunyo Cholo setup in DC, MD &amp; VA" loading="lazy" width="1024" height="1024">
+                    <img src="assets/images/service-birthday.webp" alt="Gunyo Cholo setup in DC, MD &amp; VA" loading="lazy" decoding="async" width="800" height="800">
                 </div>
                 <div class="service-gallery-item">
-                    <img src="assets/images/service-gunyo-cholo.webp" alt="Premium Gunyo Cholo decoration detail" loading="lazy" width="1024" height="1024">
+                    <img src="assets/images/service-gunyo-cholo.webp" alt="Premium Gunyo Cholo decoration detail" loading="lazy" decoding="async" width="800" height="800">
                 </div>
             </div>
             <a href="portfolio" class="btn btn-outline">View Our Portfolio</a>
@@ -222,7 +228,7 @@
     <div class="footer-grid">
         <div class="footer-about">
             <div class="logo">
-                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo" style="height: 60px;">
+                <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" style="height: 60px;" loading="lazy" decoding="async">
                 <span style="font-size: 1.8rem;">DiyoDecors</span>
             </div>
             <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We
@@ -279,8 +285,8 @@
 </div>
 
     <!-- Scripts -->
-    <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=2.1.0"></script>
+    <script defer src="assets/js/lenis.min.js"></script>
+    <script defer src="assets/js/script.js?v=2.2.0"></script>
 </body>
 
 </html>

@@ -50,18 +50,24 @@
   ]
 }</script>
 
-    <!-- Font Awesome with SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat -->
+    <!-- Preconnect to external font & icon CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.0">
+
+    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat (trimmed to used weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome with SRI (loaded non-blockingly via data-async-css) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" data-async-css>
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
 </head>
 <body>
 
@@ -70,7 +76,7 @@
 
     <header>
     <a href="/" class="logo">
-        <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo">
+        <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" decoding="async">
         <span>DiyoDecors</span>
     </a>
 
@@ -100,7 +106,7 @@
     <section class="about" style="padding-top: 60px;">
         <div class="about-grid">
             <div class="about-logo">
-                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Signature Logo">
+                <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Signature Logo" decoding="async">
             </div>
             <div class="about-text">
                 <div class="section-header left">
@@ -130,7 +136,7 @@
                 <!-- Founder 1: Umana -->
                 <div class="founder-card">
                     <div class="founder-img-wrapper">
-                        <img src="assets/images/umana.webp" width="400" height="533" alt="Umana - Co-Founder" class="founder-img">
+                        <img src="assets/images/umana.webp" width="400" height="533" alt="Umana - Co-Founder" class="founder-img" loading="lazy" decoding="async">
                         <div class="founder-info-overlay">
                             <div class="founder-socials">
                                 <a href="tel:+13012817165" class="social-icon" title="Call Umana" aria-label="Call Umana"><i class="fas fa-phone"></i></a>
@@ -148,7 +154,7 @@
                 <!-- Founder 2: Deepa -->
                 <div class="founder-card">
                     <div class="founder-img-wrapper">
-                        <img src="assets/images/deepa.webp" width="400" height="517" alt="Deepa - Co-Founder" class="founder-img">
+                        <img src="assets/images/deepa.webp" width="400" height="517" alt="Deepa - Co-Founder" class="founder-img" loading="lazy" decoding="async">
                         <div class="founder-info-overlay">
                             <div class="founder-socials">
                                 <a href="tel:+12403967635" class="social-icon" title="Call Deepa" aria-label="Call Deepa"><i class="fas fa-phone"></i></a>
@@ -179,7 +185,7 @@
     <div class="footer-grid">
         <div class="footer-about">
             <div class="logo">
-                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo" style="height: 60px;">
+                <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" style="height: 60px;" loading="lazy" decoding="async">
                 <span style="font-size: 1.8rem;">DiyoDecors</span>
             </div>
             <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We
@@ -236,8 +242,8 @@
 </div>
 
     <!-- Scripts -->
-    <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=2.1.0"></script>
+    <script defer src="assets/js/lenis.min.js"></script>
+    <script defer src="assets/js/script.js?v=2.2.0"></script>
 </body>
 
 </html>

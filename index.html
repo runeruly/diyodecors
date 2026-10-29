@@ -57,18 +57,24 @@
   ]
 }</script>
 
-    <!-- Font Awesome with SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat -->
+    <!-- Preconnect to external font & icon CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="preload" as="image" href="assets/images/hero/pasni_1_enhanced-wide.webp">
+    <link rel="preload" as="image" href="assets/images/hero/pasni_1_enhanced-wide.webp" fetchpriority="high">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.0">
+
+    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat (trimmed to used weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome with SRI (loaded non-blockingly via data-async-css) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" data-async-css>
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
 </head>
 <body>
 
@@ -77,7 +83,7 @@
 
     <header>
     <a href="#home" class="logo">
-        <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo">
+        <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" decoding="async">
         <span>DiyoDecors</span>
     </a>
 
@@ -101,9 +107,9 @@
     <section class="hero" id="home" aria-label="DiyoDecors hero">
         <div class="hero-slider">
             <div class="hero-slide active" style="background-image: url('assets/images/hero/pasni_1_enhanced-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/hero-wedding-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/service-gunyo-cholo-wide.webp');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/hero/service-diwali-wide.webp');"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/hero-wedding-wide.webp"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/service-gunyo-cholo-wide.webp"></div>
+            <div class="hero-slide" data-bg="assets/images/hero/service-diwali-wide.webp"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="floating-diyos"></div>
@@ -252,7 +258,7 @@
             <div class="services-grid">
                 <div class="service-card spotlight-card" data-service-category="weddings">
                         <div class="service-img">
-                            <img src="assets/images/hero-wedding.webp" width="1024" height="1024" alt="Weddings Decoration" loading="lazy">
+                            <img src="assets/images/hero-wedding.webp" width="800" height="800" alt="Weddings Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -267,7 +273,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="modern">
                         <div class="service-img">
-                            <img src="assets/images/service-birthday.webp" width="800" height="800" alt="Birthdays Decoration" loading="lazy">
+                            <img src="assets/images/service-birthday.webp" width="800" height="800" alt="Birthdays Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -282,7 +288,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="modern">
                         <div class="service-img">
-                            <img src="assets/images/service-babyshower.webp" width="800" height="800" alt="Baby Shower Decoration" loading="lazy">
+                            <img src="assets/images/service-babyshower.webp" width="800" height="800" alt="Baby Shower Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -297,7 +303,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="modern">
                         <div class="service-img">
-                            <img src="assets/images/service-gender-reveal.webp" width="800" height="800" alt="Gender Reveal Decoration" loading="lazy">
+                            <img src="assets/images/service-gender-reveal.webp" width="800" height="800" alt="Gender Reveal Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -312,7 +318,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="weddings">
                         <div class="service-img">
-                            <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Graduations Decoration" loading="lazy">
+                            <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Graduations Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -327,7 +333,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="traditional">
                         <div class="service-img">
-                            <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Decoration" loading="lazy">
+                            <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -342,7 +348,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="traditional">
                         <div class="service-img">
-                            <img src="assets/images/service-bartabanda.webp" width="800" height="800" alt="Bartabanda Decoration" loading="lazy">
+                            <img src="assets/images/service-bartabanda.webp" width="800" height="800" alt="Bartabanda Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -357,7 +363,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="traditional">
                         <div class="service-img">
-                            <img src="assets/images/service-gunyo-cholo.webp" width="1024" height="1024" alt="Gunyo Cholo Decoration" loading="lazy">
+                            <img src="assets/images/service-gunyo-cholo.webp" width="800" height="800" alt="Gunyo Cholo Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -372,7 +378,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="traditional">
                         <div class="service-img">
-                            <img src="assets/images/service-diwali.webp" width="1024" height="1024" alt="Diwali &amp; Festivals Decoration" loading="lazy">
+                            <img src="assets/images/service-diwali.webp" width="800" height="800" alt="Diwali &amp; Festivals Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -387,7 +393,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="traditional">
                         <div class="service-img">
-                            <img src="assets/images/service-pujas.webp" width="800" height="800" alt="Special Pujas Decoration" loading="lazy">
+                            <img src="assets/images/service-pujas.webp" width="800" height="800" alt="Special Pujas Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -402,7 +408,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="weddings">
                         <div class="service-img">
-                            <img src="assets/images/service-anniversaries.webp" width="800" height="800" alt="Anniversaries Decoration" loading="lazy">
+                            <img src="assets/images/service-anniversaries.webp" width="800" height="800" alt="Anniversaries Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -417,7 +423,7 @@
                         </div>
                     </div><div class="service-card spotlight-card" data-service-category="weddings">
                         <div class="service-img">
-                            <img src="assets/images/service-dance.webp" width="800" height="800" alt="Dance Choreography Decoration" loading="lazy">
+                            <img src="assets/images/service-dance.webp" width="800" height="800" alt="Dance Choreography Decoration" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <div class="service-icon">
@@ -450,7 +456,7 @@
         <!-- Interactive Hotspot Stage Card -->
         <div class="featured-work-card featured-work-large hotspot-card">
             <div class="hotspot-stage-media">
-                <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Ceremony Stage in Germantown, MD" loading="lazy">
+                <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Ceremony Stage in Germantown, MD" loading="lazy" decoding="async">
                 
                 <!-- Interactive Pins on Stage Photo -->
                 <div class="hotspot-pins-layer" aria-label="Stage detail hotspots">
@@ -502,7 +508,7 @@
         </div>
 
         <a href="portfolio" class="featured-work-card spotlight-card">
-            <img src="assets/images/hero-wedding.webp" width="1024" height="1024" alt="Luxury Wedding Mandap in Bethesda, MD" loading="lazy">
+            <img src="assets/images/hero-wedding.webp" width="800" height="800" alt="Luxury Wedding Mandap in Bethesda, MD" loading="lazy" decoding="async">
             <div class="featured-work-overlay">
                 <span class="portfolio-tag">Weddings</span>
                 <h3>Grand Floral Wedding Mandap</h3>
@@ -511,7 +517,7 @@
         </a>
 
         <a href="portfolio" class="featured-work-card spotlight-card">
-            <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Custom Graduation Arch in Rockville, MD" loading="lazy">
+            <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Custom Graduation Arch in Rockville, MD" loading="lazy" decoding="async">
             <div class="featured-work-overlay">
                 <span class="portfolio-tag">Milestones</span>
                 <h3>Bespoke Graduation Arch &amp; Lounge</h3>
@@ -573,7 +579,7 @@
     <div class="footer-grid">
         <div class="footer-about">
             <div class="logo">
-                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo" style="height: 60px;">
+                <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" style="height: 60px;" loading="lazy" decoding="async">
                 <span style="font-size: 1.8rem;">DiyoDecors</span>
             </div>
             <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We
@@ -630,8 +636,8 @@
 </div>
 
     <!-- Scripts -->
-    <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=2.1.0"></script>
+    <script defer src="assets/js/lenis.min.js"></script>
+    <script defer src="assets/js/script.js?v=2.2.0"></script>
 </body>
 
 </html>

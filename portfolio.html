@@ -50,18 +50,24 @@
   ]
 }</script>
 
-    <!-- Font Awesome with SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat -->
+    <!-- Preconnect to external font & icon CDNs -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.1.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.0">
+
+    <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat (trimmed to used weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome with SRI (loaded non-blockingly via data-async-css) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" data-async-css>
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
 </head>
 <body>
 
@@ -70,7 +76,7 @@
 
     <header>
     <a href="/" class="logo">
-        <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo">
+        <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" decoding="async">
         <span>DiyoDecors</span>
     </a>
 
@@ -118,7 +124,7 @@
             <!-- Item 1: Pasni Stage -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Pasni Ceremony Stage" data-location="Germantown, MD" data-desc="An enhanced traditional Nepalese Pasni ceremony setup featuring a red draped shell sofa, gold sequined backdrop, and vibrant red and white drapes." data-image="assets/images/portfolio/pasni_1_enhanced.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Ceremony Stage" loading="lazy">
+                    <img src="assets/images/portfolio/pasni_1_enhanced.webp" width="1024" height="1024" alt="Pasni Ceremony Stage" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -133,7 +139,7 @@
             <!-- Item 2: Pasni Hall Decor -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Pasni Celebration Hall" data-location="Germantown, MD" data-desc="Elegant banquet hall configuration for Pasni celebration with red satin runners, floral arrangements, and custom lighting." data-image="assets/images/portfolio/pasni_2_enhanced.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/portfolio/pasni_2_enhanced.webp" width="800" height="800" alt="Pasni Celebration Hall" loading="lazy">
+                    <img src="assets/images/portfolio/pasni_2_enhanced.webp" width="800" height="800" alt="Pasni Celebration Hall" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -148,7 +154,7 @@
             <!-- Item 3: Graduation Arch -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="graduations" data-title="Congrats Kabya Graduation Arch" data-location="Rockville, MD" data-desc="Custom organic balloon garland arch in black, white, and gold with personalized arch backdrop sign for Class of 2026." data-image="assets/images/portfolio/graduation_1_enhanced.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Congrats Kabya Graduation Arch" loading="lazy">
+                    <img src="assets/images/portfolio/graduation_1_enhanced.webp" width="800" height="800" alt="Congrats Kabya Graduation Arch" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -163,7 +169,7 @@
             <!-- Item 4: Graduation Table Setting -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="graduations" data-title="Graduation Table Details" data-location="Rockville, MD" data-desc="Intricate table setting details featuring glossy dark wood tables, crystal glassware, custom favor boxes, and signature Diyo cards." data-image="assets/images/portfolio/graduation_2_enhanced.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/portfolio/graduation_2_enhanced.webp" width="800" height="800" alt="Graduation Table Details" loading="lazy">
+                    <img src="assets/images/portfolio/graduation_2_enhanced.webp" width="800" height="800" alt="Graduation Table Details" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -178,7 +184,7 @@
             <!-- Item 5: Luxury Wedding Mandap -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="weddings" data-title="Luxury Wedding Mandap" data-location="Bethesda, MD" data-desc="Breathtaking wedding mandap with royal gold accents, lush floral arrangements, and warm ambient lighting." data-image="assets/images/hero-wedding.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/hero-wedding.webp" width="1024" height="1024" alt="Luxury Wedding Mandap" loading="lazy">
+                    <img src="assets/images/hero-wedding.webp" width="800" height="800" alt="Luxury Wedding Mandap" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -193,7 +199,7 @@
             <!-- Item 6: Bartabanda Ceremony Setup -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Bartabanda Ceremony Setup" data-location="Gaithersburg, MD" data-desc="Authentic sacred thread ceremony setup incorporating traditional brass vessels, fresh marigold garlands, and ritual seating." data-image="assets/images/service-bartabanda.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-bartabanda.webp" width="800" height="800" alt="Bartabanda Ceremony Setup" loading="lazy">
+                    <img src="assets/images/service-bartabanda.webp" width="800" height="800" alt="Bartabanda Ceremony Setup" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -208,7 +214,7 @@
             <!-- Item 7: Gunyo Cholo Celebration -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Gunyo Cholo Backdrop" data-location="Silver Spring, MD" data-desc="Vibrant red, green, and gold coming-of-age ceremony backdrop with cultural motifs and elegant seating." data-image="assets/images/service-gunyo-cholo.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-gunyo-cholo.webp" width="1024" height="1024" alt="Gunyo Cholo Backdrop" loading="lazy">
+                    <img src="assets/images/service-gunyo-cholo.webp" width="800" height="800" alt="Gunyo Cholo Backdrop" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -223,7 +229,7 @@
             <!-- Item 8: Birthday Party Backdrop -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="birthdays" data-title="Vibrant Birthday Backdrop" data-location="Fairfax, VA" data-desc="Creative theme decoration with organic balloon sculptures, personalized backdrop signage, and cake table display." data-image="assets/images/service-birthday.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-birthday.webp" width="800" height="800" alt="Vibrant Birthday Backdrop" loading="lazy">
+                    <img src="assets/images/service-birthday.webp" width="800" height="800" alt="Vibrant Birthday Backdrop" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -238,7 +244,7 @@
             <!-- Item 9: Baby Shower Celebration -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="birthdays" data-title="Soft Pastel Baby Shower" data-location="Tysons, VA" data-desc="Soft, elegant pastel arch and floral setup to welcome the new arrival in style." data-image="assets/images/service-babyshower.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-babyshower.webp" width="800" height="800" alt="Soft Pastel Baby Shower" loading="lazy">
+                    <img src="assets/images/service-babyshower.webp" width="800" height="800" alt="Soft Pastel Baby Shower" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -253,7 +259,7 @@
             <!-- Item 10: Milestone Anniversary Gala -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="weddings" data-title="Milestone Anniversary Setup" data-location="Washington, DC" data-desc="Sophisticated decor with crystal accents, deep burgundy drapes, and warm candle illumination." data-image="assets/images/service-anniversaries.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-anniversaries.webp" width="800" height="800" alt="Milestone Anniversary Setup" loading="lazy">
+                    <img src="assets/images/service-anniversaries.webp" width="800" height="800" alt="Milestone Anniversary Setup" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -268,7 +274,7 @@
             <!-- Item 11: Diwali Festival Setup -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Diwali Light Festival Setup" data-location="Germantown, MD" data-desc="Radiant festival decor featuring handcrafted diyos, floral rangoli patterns, and warm ambient string lights." data-image="assets/images/service-diwali.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-diwali.webp" width="1024" height="1024" alt="Diwali Light Festival Setup" loading="lazy">
+                    <img src="assets/images/service-diwali.webp" width="800" height="800" alt="Diwali Light Festival Setup" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -283,7 +289,7 @@
             <!-- Item 12: Special Puja Mandap -->
             <div class="portfolio-card spotlight-card" tabindex="0" role="button" aria-haspopup="dialog" data-category="traditional" data-title="Spiritual Puja Altar" data-location="Frederick, MD" data-desc="Serene and peaceful traditional altar with yellow marigolds, brass kalash items, and sacred drapery." data-image="assets/images/service-pujas.webp">
                 <div class="portfolio-img-wrap">
-                    <img src="assets/images/service-pujas.webp" width="800" height="800" alt="Spiritual Puja Altar" loading="lazy">
+                    <img src="assets/images/service-pujas.webp" width="800" height="800" alt="Spiritual Puja Altar" loading="lazy" decoding="async">
                     <div class="portfolio-overlay">
                         <span class="portfolio-zoom-icon"><i class="fas fa-search-plus"></i></span>
                     </div>
@@ -332,7 +338,7 @@
     <div class="footer-grid">
         <div class="footer-about">
             <div class="logo">
-                <img src="assets/images/logo.webp" width="600" height="600" alt="DiyoDecors Logo" style="height: 60px;">
+                <img src="assets/images/logo.webp" width="360" height="360" alt="DiyoDecors Logo" style="height: 60px;" loading="lazy" decoding="async">
                 <span style="font-size: 1.8rem;">DiyoDecors</span>
             </div>
             <p>Premium event decoration services inspired by the sacred and warm glow of the traditional Diyo. We
@@ -389,8 +395,8 @@
 </div>
 
     <!-- Scripts -->
-    <script src="assets/js/lenis.min.js"></script>
-    <script src="assets/js/script.js?v=2.1.0"></script>
+    <script defer src="assets/js/lenis.min.js"></script>
+    <script defer src="assets/js/script.js?v=2.2.0"></script>
 </body>
 
 </html>

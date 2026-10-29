@@ -9,8 +9,8 @@ export const services = [
     icons: ['fa-solid fa-ring', 'fa-solid fa-heart'],
     cardDesc: 'Luxurious mandaps, breathtaking stage setups, and elegant floral arrangements that make your big day truly magical.',
     cardImage: 'assets/images/hero-wedding.webp',
-    cardImageWidth: 1024,
-    cardImageHeight: 1024,
+    cardImageWidth: 800,
+    cardImageHeight: 800,
     detailIntro: 'Your wedding is the most important day of your life, and every detail should reflect your love story. DiyoDecors designs breathtaking wedding decor — from royal mandaps and lush floral arches to elegant reception stages — blending authentic cultural touches with modern luxury styling.',
     included: [
       'Bespoke wedding mandaps & grand reception stage setups',
@@ -317,8 +317,8 @@ export const services = [
     icons: ['fa-solid fa-child'],
     cardDesc: 'Beautiful, culturally rich setups featuring vibrant red, green, and gold colors for the traditional coming-of-age ceremony.',
     cardImage: 'assets/images/service-gunyo-cholo.webp',
-    cardImageWidth: 1024,
-    cardImageHeight: 1024,
+    cardImageWidth: 800,
+    cardImageHeight: 800,
     detailIntro: 'Celebrate the traditional coming-of-age ceremony with beautiful, culturally rich decor. DiyoDecors creates vibrant red, green, and gold setups with elegant fabric drapery, floral backdrops, and photo areas that honor this cherished tradition.',
     included: [
       'Traditional red, green & gold fabric stage drapery',
@@ -361,8 +361,8 @@ export const services = [
     icons: ['fa-solid fa-lightbulb'],
     cardDesc: 'Stunning setups for Diwali and other festivals, complete with glowing diyos, floral rangolis, and magical lighting.',
     cardImage: 'assets/images/service-diwali.webp',
-    cardImageWidth: 1024,
-    cardImageHeight: 1024,
+    cardImageWidth: 800,
+    cardImageHeight: 800,
     detailIntro: 'Illuminate your home or venue with the warm glow of Diwali. DiyoDecors creates stunning festive setups featuring handcrafted diyas, marigold rangoli patterns, floral decor, and magical lighting that captures the spirit of the festival of lights.',
     included: [
       'Handcrafted brass & clay diyo lighting arrangements',

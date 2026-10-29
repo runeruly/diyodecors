@@ -1,5 +1,9 @@
+// Promote non-blocking stylesheets immediately on script execution (CSP-compliant)
+document.querySelectorAll('link[data-async-css]').forEach((link) => {
+    link.media = 'all';
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DiyoDecors script.js loaded - v2.1.0');
     // Clean URL Bar: Strip .html extension if visited via a direct .html URL
     if (window.location.pathname.endsWith('.html') && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
         const cleanPath = window.location.pathname
@@ -7,9 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/\.html$/, '');
         window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
     }
-    // Initialize Lenis Smooth Scroll
+    const isFinePointerDevice = window.matchMedia('(pointer: fine)').matches;
+    const prefersReducedMotionEarly = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Initialize Lenis Smooth Scroll on desktop fine-pointer devices only
     let lenis;
-    if (typeof Lenis !== 'undefined') {
+    if (typeof Lenis !== 'undefined' && isFinePointerDevice && !prefersReducedMotionEarly) {
         lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -18,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             smoothWheel: true,
             wheelMultiplier: 1,
             touchMultiplier: 1.5,
-            syncTouch: false // Keeps native momentum on mobile devices
+            syncTouch: false
         });
 
         // Expose to window scope
@@ -88,10 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Generate Floating Diyos Particles
+    // Generate Floating Diyos Particles (scaled for device capability)
     const floatingContainer = document.querySelector('.floating-diyos');
-    if (floatingContainer) {
-        for (let i = 0; i < 20; i++) {
+    if (floatingContainer && !prefersReducedMotionEarly) {
+        const particleCount = isFinePointerDevice ? 12 : 6;
+        for (let i = 0; i < particleCount; i++) {
             createDiyoParticle(floatingContainer);
         }
     }
@@ -257,11 +265,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let heroInterval;
         const totalSlidesStr = String(heroSlides.length).padStart(2, '0');
 
+        const ensureHeroSlideBg = (slide) => {
+            if (slide && slide.dataset.bg) {
+                slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+                delete slide.dataset.bg;
+            }
+        };
+
         const setHeroSlide = (index) => {
             heroSlides.forEach(s => s.classList.remove('active'));
             heroDots.forEach(d => d.classList.remove('active'));
 
             currentHeroSlide = (index + heroSlides.length) % heroSlides.length;
+
+            ensureHeroSlideBg(heroSlides[currentHeroSlide]);
+            ensureHeroSlideBg(heroSlides[(currentHeroSlide + 1) % heroSlides.length]);
 
             heroSlides[currentHeroSlide].classList.add('active');
             if (heroDots[currentHeroSlide]) {
@@ -272,6 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 heroCounter.textContent = `${currentStr} / ${totalSlidesStr}`;
             }
         };
+
+        // Pre-warm remaining hero slides after initial page load completes
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                heroSlides.forEach(ensureHeroSlideBg);
+            }, 1800);
+        }, { once: true });
 
         const startHeroTimer = () => {
             heroInterval = setInterval(() => {
@@ -934,23 +959,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const marqueeTracks = document.querySelectorAll('.marquee-track');
     let lastScrollY = window.scrollY;
     let marqueeResetTimer;
+    let cachedMaxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+    let cachedViewportHeight = window.innerHeight;
 
-    const handleVisualScroll = (scrollY) => {
+    const updateScrollMetrics = () => {
+        cachedViewportHeight = window.innerHeight;
+        cachedMaxScroll = Math.max(document.documentElement.scrollHeight - cachedViewportHeight, 0);
+    };
+    window.addEventListener('resize', updateScrollMetrics, { passive: true });
+    window.addEventListener('load', updateScrollMetrics, { once: true });
+
+    // Cache Web Animations for marquee tracks once instead of querying on every scroll tick
+    let cachedMarqueeAnims = [];
+    if (marqueeTracks.length > 0 && typeof Element.prototype.getAnimations === 'function') {
+        marqueeTracks.forEach((track) => {
+            cachedMarqueeAnims.push(...track.getAnimations());
+        });
+    }
+
+    let scrollFramePending = false;
+    let pendingScrollY = window.scrollY;
+
+    const applyVisualScroll = (scrollY) => {
         // 1. Update Top Gold Scroll Progress Bar
         if (progressBar) {
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            const ratio = maxScroll > 0 ? Math.min(Math.max(scrollY / maxScroll, 0), 1) : 0;
+            const ratio = cachedMaxScroll > 0 ? Math.min(Math.max(scrollY / cachedMaxScroll, 0), 1) : 0;
             progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
         }
 
         if (prefersReducedMotion) return;
 
-        // 2. Subtle Vertical Parallax on Curtain-Reveal Images
-        if (parallaxContainers.length > 0) {
-            const viewportHalf = window.innerHeight / 2;
+        // 2. Subtle Vertical Parallax on Curtain-Reveal Images (desktop only)
+        if (isFinePointer && parallaxContainers.length > 0) {
+            const viewportHalf = cachedViewportHeight / 2;
             parallaxContainers.forEach((container) => {
                 const rect = container.getBoundingClientRect();
-                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                if (rect.bottom > 0 && rect.top < cachedViewportHeight) {
                     const centerOffset = (rect.top + rect.height / 2 - viewportHalf) / viewportHalf;
                     const shiftY = (centerOffset * -12).toFixed(1);
                     container.style.setProperty('--parallax-y', `${shiftY}px`);
@@ -959,23 +1003,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 3. Marquee Scroll-Velocity Boost
-        if (marqueeTracks.length > 0 && typeof Element.prototype.getAnimations === 'function') {
+        if (cachedMarqueeAnims.length > 0) {
             const delta = Math.abs(scrollY - lastScrollY);
             lastScrollY = scrollY;
             const boost = Math.min(1 + delta * 0.08, 3.2);
-            marqueeTracks.forEach((track) => {
-                track.getAnimations().forEach((anim) => {
-                    anim.playbackRate = boost;
-                });
-            });
+            for (let i = 0; i < cachedMarqueeAnims.length; i++) {
+                cachedMarqueeAnims[i].playbackRate = boost;
+            }
             clearTimeout(marqueeResetTimer);
             marqueeResetTimer = setTimeout(() => {
-                marqueeTracks.forEach((track) => {
-                    track.getAnimations().forEach((anim) => {
-                        anim.playbackRate = 1;
-                    });
-                });
+                for (let i = 0; i < cachedMarqueeAnims.length; i++) {
+                    cachedMarqueeAnims[i].playbackRate = 1;
+                }
             }, 150);
+        }
+    };
+
+    const handleVisualScroll = (scrollY) => {
+        pendingScrollY = scrollY;
+        if (!scrollFramePending) {
+            scrollFramePending = true;
+            window.requestAnimationFrame(() => {
+                applyVisualScroll(pendingScrollY);
+                scrollFramePending = false;
+            });
         }
     };
 
@@ -988,7 +1039,7 @@ document.addEventListener('DOMContentLoaded', () => {
             handleVisualScroll(window.scrollY);
         }, { passive: true });
     }
-    handleVisualScroll(window.scrollY);
+    applyVisualScroll(window.scrollY);
 });
 
 function createDiyoParticle(container) {
