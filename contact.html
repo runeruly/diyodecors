@@ -58,7 +58,7 @@
     
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.2">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2.3">
 
     <!-- Google Fonts: Cinzel + Cormorant Garamond (Luxury Editorial Serif) + Montserrat (trimmed to used weights) -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -330,15 +330,22 @@
     </div>
 </footer>
 
-<!-- Mobile Quick-Contact Bar -->
-<div class="mobile-contact-bar">
-    <a href="tel:+13012817165" class="mc-bar-btn mc-call"><i class="fas fa-phone-alt"></i> Call Us</a>
-    <a href="https://wa.me/13012817165?text=Hi%20DiyoDecors%2C%20I%27m%20interested%20in%20your%20event%20decoration%20services." target="_blank" rel="noopener noreferrer" class="mc-bar-btn mc-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<!-- Floating Luxury Quick-Contact Capsule -->
+<div class="mobile-contact-bar" role="region" aria-label="Quick contact actions">
+    <a href="tel:+13012817165" class="mc-bar-btn mc-call" aria-label="Call DiyoDecors">
+        <span class="mc-icon-wrap"><i class="fas fa-phone-alt"></i></span>
+        <span class="mc-label">Call Us</span>
+    </a>
+    <span class="mc-divider" aria-hidden="true"></span>
+    <a href="https://wa.me/13012817165?text=Hi%20DiyoDecors%2C%20I%27m%20interested%20in%20your%20event%20decoration%20services." target="_blank" rel="noopener noreferrer" class="mc-bar-btn mc-wa" aria-label="Chat on WhatsApp">
+        <span class="mc-icon-wrap"><i class="fab fa-whatsapp"></i></span>
+        <span class="mc-label">WhatsApp</span>
+    </a>
 </div>
 
     <!-- Scripts -->
     <script defer src="assets/js/lenis.min.js"></script>
-    <script defer src="assets/js/script.js?v=2.2.2"></script>
+    <script defer src="assets/js/script.js?v=2.2.3"></script>
 </body>
 
 </html>
