@@ -65,9 +65,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav ul');
     
+    const closeMobileMenu = () => {
+        if (!nav || !nav.classList.contains('active')) return;
+        nav.classList.remove('active');
+        document.body.style.overflow = '';
+        if (mobileBtn) {
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            const icon = mobileBtn.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    };
+
     if (mobileBtn && nav) {
         mobileBtn.addEventListener('click', () => {
             const isActive = nav.classList.toggle('active');
+            document.body.style.overflow = isActive ? 'hidden' : '';
             mobileBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             const icon = mobileBtn.querySelector('i');
             if (icon) {
@@ -85,13 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (nav && nav.classList.contains('active') && mobileBtn && !e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
-            nav.classList.remove('active');
-            mobileBtn.setAttribute('aria-expanded', 'false');
-            const icon = mobileBtn.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            closeMobileMenu();
         }
     });
 
@@ -110,17 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Close mobile menu if open
-            if (nav && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                if (mobileBtn) {
-                    mobileBtn.setAttribute('aria-expanded', 'false');
-                    const icon = mobileBtn.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            }
+            closeMobileMenu();
 
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -658,6 +657,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
             }
         });
+
+        // Mobile Touch Swipe Support for Portfolio Lightbox
+        let lbTouchStartX = 0;
+        let lbTouchStartY = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                lbTouchStartX = e.touches[0].clientX;
+                lbTouchStartY = e.touches[0].clientY;
+            }
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            if (e.changedTouches.length === 1) {
+                const deltaX = e.changedTouches[0].clientX - lbTouchStartX;
+                const deltaY = e.changedTouches[0].clientY - lbTouchStartY;
+                if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                    updateVisibleCards();
+                    if (deltaX < 0) {
+                        openLightbox((currentLightboxIndex + 1) % visibleCards.length);
+                    } else {
+                        openLightbox((currentLightboxIndex - 1 + visibleCards.length) % visibleCards.length);
+                    }
+                }
+            }
+        }, { passive: true });
     }
 
     // Custom Event Type Toggle, Dynamic Vision Placeholder & URL Query Param Auto-select
@@ -766,7 +790,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 servicesDotsContainer.appendChild(dot);
 
                 dot.addEventListener('click', () => {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    const targetLeft = card.offsetLeft - (servicesGrid.clientWidth - card.offsetWidth) / 2;
+                    servicesGrid.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
                 });
             });
         };
